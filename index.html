@@ -1,96 +1,209 @@
 <!DOCTYPE html>
-<html lang="en-SG">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Nirvana Memorial Garden Singapore</title>
-<meta name="description" content="Nirvana Memorial Garden Singapore provides professional funeral services, bereavement counseling, and memorial garden services. Established in 2009.">
-<meta name="keywords" content="Nirvana Memorial Garden, Funeral Services, Bereavement, Singapore, Memorial Park, Cremation">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 永恒生命服务</title>
+    <style>
+        /* --- 1. 全局重置与基础样式 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.8;
+            background-color: #fff;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#f8f8f8;color:#333;line-height:1.7;}
-.container{width:100%;max-width:1140px;margin:0 auto;padding:0 15px;}
+        /* 定义配色方案：深灰与金色 */
+        :root {
+            --primary-color: #2c2c2c; /*以此深色为主 */
+            --accent-color: #c5a059;  /* 金色作为点缀 */
+            --light-bg: #f9f9f9;
+        }
 
-.page-header{width:100%;height:320px;position:relative;overflow:hidden;margin-bottom:40px;}
-.page-header img{width:100%;height:100%;object-fit:cover;}
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-.content-card{background:#fff;padding:45px 50px;position:relative;z-index:2;margin-top:-80px;box-shadow:0 4px 15px rgba(0,0,0,0.05);}
-.content-card h1{font-size:36px;font-weight:600;color:#222;margin-bottom:25px;padding-bottom:15px;border-bottom:2px solid #f0f0f0;}
-.content-card h2{font-size:24px;font-weight:500;margin-top:40px;margin-bottom:15px;}
-.content-card p{font-size:16px;color:#555;margin-bottom:20px;}
+        /* --- 2. 导航栏 --- */
+        header {
+            background: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-.image-gallery{display:flex;justify-content:space-between;margin:30px 0 40px;gap:25px;}
-.gallery-item{flex:1;height:280px;overflow:hidden;}
-.gallery-item img{width:100%;height:100%;object-fit:cover;}
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 2px; color: var(--primary-color); }
+        
+        nav ul { display: flex; gap: 30px; }
+        nav a:hover { color: var(--accent-color); }
 
-ul{list-style:none;margin-bottom:30px;}
-ul li{font-size:16px;color:#555;margin-bottom:12px;padding-left:25px;position:relative;}
-ul li:before{content:'•';color:#a91e14;font-size:20px;position:absolute;left:0;top:-2px;}
+        /* --- 3. 首屏大图 --- */
+        .hero {
+            /* 这里使用了一张 Unsplash 的免费图，你可以替换成你自己的 */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1518182170546-0766bc6f9213?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            height: 60vh; /* 占据屏幕高度的60% */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px; /* 抵消固定导航栏的高度 */
+        }
 
-footer{display:block;background:#222;color:#ccc;padding:40px 0;margin-top:60;font-size:14px;text-align:center;}
+        .hero h1 { font-size: 3rem; font-family: "Times New Roman", serif; letter-spacing: 1px; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; font-weight: 300; }
 
-@media(max-width:768px){
-.page-header{height:200px;}
-.content-card{padding:20px 15px;margin-top:-40px;}
-.image-gallery{flex-direction:column;}
-.gallery-item{height:220px;}
-}
-</style>
+        /* --- 4. 通用区块样式 --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-family: "Times New Roman", serif;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        /* 标题下的金色小短线 */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+        }
+
+        /* --- 5. 关于我们 (图文左右布局) --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 { margin-bottom: 20px; font-size: 1.5rem; }
+        .about-text p { margin-bottom: 20px; color: #666; text-align: justify; }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- 6. 价值观/服务 (三列布局) --- */
+        .features { background-color: var(--light-bg); }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-item { padding: 20px; }
+        .feature-icon { font-size: 40px; margin-bottom: 20px; display: block; }
+        .feature-item h4 { margin-bottom: 15px; font-size: 1.2rem; }
+
+        /* --- 7. 页脚 --- */
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        footer p { opacity: 0.7; font-size: 0.9rem; }
+
+        /* --- 手机端适配 --- */
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            .about-grid { grid-template-columns: 1fr; } /* 手机端变成单列 */
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- 顶部大图（稳定可显示） -->
-<div class="page-header">
-< img src="https://pic.616pic.com/photo_cover/00/05/99/616pic_5992615_s.jpg" alt="Banner">
-</div>
+    <!-- 导航栏 -->
+    <header>
+        <div class="logo">NIRVANA STYLE</div>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">服务</a></li>
+                <li><a href="#">联系</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="container">
-<div class="content-card">
-<h1>Who We Are</h1>
+    <!-- 首屏大图 -->
+    <section class="hero">
+        <div>
+            <h1>传承爱与尊严</h1>
+            <p>为您提供最贴心的生命礼赞服务</p>
+        </div>
+    </section>
 
-<p>Nirvana Memorial Garden (Singapore) was officially established in 2009. We are a subsidiary of Nirvana Asia Group, a leading and reputable funeral services group in the Asia-Pacific region. With a strong presence across multiple countries, we bring global expertise and a deep understanding of local cultures to Singapore.</p >
+    <!-- 关于我们 -->
+    <section class="container">
+        <h2 class="section-title">我们的理念</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>不仅仅是服务，更是关怀</h3>
+                <p>正如 Nirvana 所倡导的，我们相信每一个生命都值得被铭记。我们致力于打破传统行业的冰冷印象，用温暖和专业的态度，陪伴您走过人生最重要的时刻。</p>
+                <p>我们的团队由经验丰富的专业人士组成，致力于为您提供超越期望的服务体验。无论是生前规划还是身后事宜，我们都将全程守护。</p>
+            </div>
+            <div class="about-img">
+                <!-- 这里的图片也是占位图，请替换为你自己的 -->
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="办公环境">
+            </div>
+        </div>
+    </section>
 
-<!-- 三张稳定图片，国内必显示 -->
-<div class="image-gallery">
-<div class="gallery-item">
-< img src="https://pic.616pic.com/photo_cover/00/03/32/616pic_3323647_s.jpg" alt="Garden">
-</div>
-<div class="gallery-item">
-< img src="https://pic.616pic.com/photo_cover/00/05/92/616pic_5920706_s.jpg" alt="Environment">
-</div>
-<div class="gallery-item">
-< img src="https://pic.616pic.com/photo_cover/00/03/32/616pic_3323646_s.jpg" alt="Facility">
-</div>
-</div>
+    <!-- 核心价值观 -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">为什么选择我们</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">💎</span>
+                    <h4>诚信为本</h4>
+                    <p>透明定价，无隐形消费，让您安心放心。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🤝</span>
+                    <h4>专业服务</h4>
+                    <p>一站式解决方案，专业团队全程一对一服务。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🕊️</span>
+                    <h4>人文关怀</h4>
+                    <p>尊重生命，尊重逝者，给予家属最大的慰藉。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h2>Our Vision</h2>
-<p>To be a caring and responsible organization that touches the hearts of many, providing solace and support to families during their time of need.</p >
-
-<h2>Our Mission</h2>
-<p>To demonstrate the highest degree of professionalism, compassion, and integrity in all our services, ensuring that every moment is treated with the utmost respect and dignity.</p >
-
-<h2>Our Core Values: LIFE</h2>
-<ul>
-<li><strong>L - Love</strong>: Care and respect to everyone, regardless of race, religion, or background.</li>
-<li><strong>I - Integrity</strong>: Honest and doing the right thing in all our dealings.</li>
-<li><strong>F - Focus</strong>: Delivering value to customers with unwavering dedication.</li>
-<li><strong>E - Empathy</strong>: Compassion to ourselves and others, sharing the pain and sorrow of families.</li>
-</ul>
-
-<h2>Milestones</h2>
-<p><strong>2026:</strong> Nirvana SG app launched, offering digital services and convenience.</p >
-<p><strong>2025:</strong> Awarded "Top Brand" by Influential Brands.</p >
-<p><strong>2018:</strong> Recognized as the Largest Bereavement Company in Singapore.</p >
-<p><strong>2009:</strong> Official establishment of Nirvana Memorial Garden Singapore.</p >
-
-</div>
-</div>
-
-<footer>
-© 2026 Nirvana Memorial Garden Singapore. All Rights Reserved.
-</footer>
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 Nirvana Style Clone. All Rights Reserved.</p>
+        <p>Designed for Peace of Mind.</p>
+    </footer>
 
 </body>
 </html>
