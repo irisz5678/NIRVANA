@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Nirvana Style</title>
     <style>
-        /* --- 1. 全局重置 --- */
+        /* --- 基础样式 --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -24,7 +24,7 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* --- 2. 导航栏 --- */
+        /* --- 导航栏 --- */
         header {
             background: #fff;
             padding: 20px 50px;
@@ -50,18 +50,19 @@
         nav a { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         nav a:hover { color: var(--accent-color); }
 
-        /* --- 语言切换按钮样式 --- */
+        /* --- 语言切换按钮样式 (新增) --- */
         .lang-btn {
             background: transparent;
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 5px 15px;
+            padding: 6px 15px;
             font-size: 12px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
             border-radius: 2px;
+            font-weight: bold;
         }
 
         .lang-btn:hover {
@@ -69,7 +70,7 @@
             color: #fff;
         }
 
-        /* --- 3. 首屏大图 --- */
+        /* --- 首屏大图 --- */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             height: 60vh; 
@@ -97,7 +98,7 @@
             text-transform: uppercase;
         }
 
-        /* --- 4. 通用区块样式 --- */
+        /* --- 通用区块 --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -123,7 +124,7 @@
             margin: 20px auto 0;
         }
 
-        /* --- 5. 关于我们 --- */
+        /* --- 关于我们 --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -161,7 +162,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
-        /* --- 6. 核心价值观 --- */
+        /* --- 核心价值观 --- */
         .features { background-color: var(--light-bg); }
         
         .features-grid {
@@ -181,7 +182,7 @@
         }
         .feature-item p { color: #777; font-size: 0.95rem; }
 
-        /* --- 7. 页脚 --- */
+        /* --- 页脚 --- */
         footer {
             background: var(--primary-color);
             color: #fff;
@@ -191,7 +192,7 @@
         footer p { opacity: 0.6; font-size: 0.85rem; letter-spacing: 0.5px; }
         footer .copyright { margin-top: 10px; font-size: 0.75rem; }
 
-        /* --- 手机端适配 --- */
+        /* --- 手机端 --- */
         @media (max-width: 768px) {
             header { padding: 20px; }
             nav { display: none; } 
@@ -215,7 +216,7 @@
             </ul>
         </nav>
         <!-- 切换按钮 -->
-        <button class="lang-btn" id="lang-toggle" aria-label="Switch Language">EN</button>
+        <button class="lang-btn" id="lang-toggle">EN</button>
     </header>
 
     <!-- 首屏大图 -->
@@ -274,7 +275,7 @@
 
     <!-- JavaScript 逻辑 -->
     <script>
-        // 1. 定义翻译字典
+        // 1. 翻译字典 (在这里修改文字)
         const translations = {
             en: {
                 nav_home: "Home",
@@ -320,12 +321,11 @@
             }
         };
 
-        // 2. 获取按钮元素
+        // 2. 获取按钮和切换逻辑
         const langToggleBtn = document.getElementById('lang-toggle');
         
-        // 3. 切换语言函数
         function updateLanguage(lang) {
-            // 更新页面上所有带有 data-i18n 属性的元素
+            // 替换所有带有 data-i18n 属性的文字
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
@@ -336,21 +336,18 @@
             // 更新按钮文字
             langToggleBtn.textContent = lang === 'en' ? '中文' : 'EN';
             
-            // 更新网页语言属性 (对搜索引擎和浏览器很重要)
-            document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
-            
-            // 保存到本地存储 (刷新页面后保持语言设置)
+            // 保存用户选择
             localStorage.setItem('preferred-lang', lang);
         }
 
-        // 4. 绑定点击事件
+        // 3. 绑定点击事件
         langToggleBtn.addEventListener('click', () => {
             const currentLang = localStorage.getItem('preferred-lang') || 'en';
             const nextLang = currentLang === 'en' ? 'zh' : 'en';
             updateLanguage(nextLang);
         });
 
-        // 5. 页面加载时初始化语言
+        // 4. 页面加载时初始化
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en'; // 默认英文
             updateLanguage(savedLang);
