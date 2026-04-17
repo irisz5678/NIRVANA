@@ -92,7 +92,9 @@ body {
 
 .image-text img {
     width: 100%;
+    filter: brightness(0.85) contrast(0.9);
 }
+
 
 .site-footer {
     background: #ddd;
