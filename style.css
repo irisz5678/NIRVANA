@@ -86,13 +86,10 @@ body {
 
 .hero-inner h1 {
     font-family: "Times New Roman", serif;
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-/* ===== Sections ===== */
-.section {
-    padding: 100px 20px;
+    font-size: 3.2rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 20px;
 }
 
 .light-bg {
