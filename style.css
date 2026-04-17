@@ -1,15 +1,9 @@
-function setLang(lang) {
-  document.documentElement.lang = lang;
-
-  document.querySelector(".lang-zh").style.display =
-    lang === "zh" ? "block" : "none";
-
-  document.querySelector(".lang-en").style.display =
-    lang === "en" ? "block" : "none";
-
-  localStorage.setItem("lang", lang);
+/* 默认隐藏英文 */
+.lang-en {
+  display: none;
 }
 
-// 页面加载时恢复语言
-const savedLang = localStorage.getItem("lang") || "zh";
-setLang(savedLang);
+/* 页面随便美化一点 */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
