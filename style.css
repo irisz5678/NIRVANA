@@ -35,11 +35,28 @@ body {
 
 /* ===== Hero（关键：这里引用本地图片）===== */
 .about-hero {
+    position: relative;
     background-image: url("hero.jpg");
     background-size: cover;
     background-position: center;
+    padding: 160px 24px;
     color: #fff;
-    padding: 120px 24px;
+}
+
+/* ✅ 关键：深色遮罩（这一步最重要） */
+.about-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* ✅ 确保文字在遮罩之上 */
+.hero-inner {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
 }
 
 .hero-inner {
