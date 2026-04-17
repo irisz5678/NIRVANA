@@ -10,7 +10,6 @@ function setLang(lang) {
     zh.forEach(el => el.style.display = 'block');
     en.forEach(el => el.style.display = 'none');
     document.documentElement.lang = 'zh';
-    lang = 'zh';
   }
 
   try {
@@ -19,12 +18,7 @@ function setLang(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  let saved = 'zh';
-  try {
-    const l = localStorage.getItem('lang');
-    if (l === 'en' || l === 'zh') saved = l;
-  } catch (e) {}
-
+  const saved = localStorage.getItem('lang') || 'zh';
   setLang(saved);
 });
 ``
