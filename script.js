@@ -1,22 +1,29 @@
 function setLang(lang) {
-  const zh = document.querySelector('.lang-zh');
-  const en = document.querySelector('.lang-en');
-
-  if (!zh || !en) {
-    console.error('找不到 lang-zh 或 lang-en');
-    return;
-  }
+  const zhBlocks = document.querySelectorAll('.lang-zh');
+  const enBlocks = document.querySelectorAll('.lang-en');
 
   if (lang === 'en') {
-    zh.style.display = 'none';
-    en.style.display = 'block';
+    zhBlocks.forEach(el => el.style.display = 'none');
+    enBlocks.forEach(el => el.style.display = 'block');
+    document.documentElement.lang = 'en';
   } else {
-    zh.style.display = 'block';
-    en.style.display = 'none';
+    zhBlocks.forEach(el => el.style.display = 'block');
+    enBlocks.forEach(el => el.style.display = 'none');
+    document.documentElement.lang = 'zh';
+    lang = 'zh';
   }
+
+  try {
+    localStorage.setItem('lang', lang);
+  } catch (e) {}
 }
 
-// ✅ 页面加载完成后，强制默认中文
-document.addEventListener('DOMContentLoaded', function () {
-  setLang('zh');
+document.addEventListener('DOMContentLoaded', () => {
+  let saved = 'zh';
+  try {
+    const l = localStorage.getItem('lang');
+    if (l === 'en' || l === 'zh') saved = l;
+  } catch (e) {}
+
+  setLang(saved);
 });
