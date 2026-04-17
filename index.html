@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>About Us | Nirvana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ✅ 修正：CSS 在同一层 -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -12,7 +14,7 @@
 <!-- ================= Header ================= -->
 <header class="site-header">
     <div class="header-inner">
-        <div class="logo">NIRVANA富贵山庄</div>
+        <div class="logo">NIRVANA 富贵山庄</div>
 
         <div class="header-right">
             <button type="button" class="lang-btn" onclick="setLang('en')">EN</button>
@@ -53,58 +55,26 @@
     </div>
 </section>
 
-<!-- ================= Philosophy（✅ 已修好） ================= -->
+<!-- ================= Philosophy ================= -->
 <section class="section light-bg">
-    <div class="container">
-        <h2 class="section-title">
-            <span class="lang-en">Our Philosophy</span>
-            <span class="lang-zh">我们的理念</span>
-        </h2>
+    <div class="container image-text">
+        <img src="hall.jpg" alt="Memorial Hall">
 
-        <div class="features-grid">
+        <div>
+            <h2 class="section-title">
+                <span class="lang-en">Our Philosophy</span>
+                <span class="lang-zh">我们的理念</span>
+            </h2>
 
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
+            <p class="lang-en">
+                We uphold professionalism, integrity, and compassion
+                in every aspect of our service.
+            </p>
 
-                <h4 class="lang-en">Integrity</h4>
-                <h4 class="lang-zh">诚信</h4>
-
-                <p class="lang-en">
-                    We uphold honesty and transparency in everything we do.
-                </p>
-                <p class="lang-zh">
-                    我们在所有服务与承诺中，坚持诚实、透明与责任。
-                </p>
-            </div>
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Excellence</h4>
-                <h4 class="lang-zh">卓越</h4>
-
-                <p class="lang-en">
-                    We deliver excellence in every detail, tailored to you.
-                </p>
-                <p class="lang-zh">
-                    我们追求每一个细节的卓越，用心服务每一个家庭。
-                </p>
-            </div>
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Compassion</h4>
-                <h4 class="lang-zh">关怀</h4>
-
-                <p class="lang-en">
-                    We serve with empathy and kindness at every step.
-                </p>
-                <p class="lang-zh">
-                    我们以同理心、尊重与关怀，陪伴人生的重要时刻。
-                </p>
-            </div>
-
+            <p class="lang-zh">
+                我们以专业、诚信与关怀，
+                陪伴人生中最重要的告别时刻。
+            </p>
         </div>
     </div>
 </section>
@@ -118,17 +88,15 @@
         </h2>
 
         <div class="contact-card">
-            <p class="contact-line lang-en">Contact: Wendy Chen</p>
-            <p class="contact-line lang-zh">联系人：Wendy Chen</p>
-            <p class="contact-line lang-en">Phone: <a href="tel:+6592381366">+65 9238 1366</a></p>
-            <p class="contact-line lang-zh">手机号：<a href="tel:+6592381366">+65 9238 1366</a></p>
-            <p class="contact-line lang-en">Email: <a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
-            <p class="contact-line lang-zh">邮箱：<a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
+            <p class="lang-en">Contact: Wendy Chen</p>
+            <p class="lang-zh">联系人：Wendy Chen</p>
+
+            <p><a href="tel:+6592381366">+65 9238 1366</a></p>
+            <p><a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
         </div>
     </div>
 </section>
 
-<!-- ================= Footer ================= -->
 <footer class="site-footer">
     <p>NIRVANA MEMORIAL GARDEN</p>
     <p class="small">© 2026 Nirvana. All Rights Reserved.</p>
@@ -136,26 +104,16 @@
 
 <!-- ================= Language Script ================= -->
 <script>
-function getDefaultDisplay(tagName) {
-    tagName = tagName.toLowerCase();
-    if (tagName === 'span' || tagName === 'a' || tagName === 'strong' || tagName === 'em') {
-        return 'inline';
-    }
-    return 'block';
-}
-
 function setLang(lang) {
-    document.documentElement.lang = (lang === 'zh') ? 'zh' : 'en';
+    document.documentElement.lang = lang;
 
     document.querySelectorAll('.lang-en').forEach(el => {
-        el.style.display = (lang === 'en') ? getDefaultDisplay(el.tagName) : 'none';
+        el.style.display = (lang === 'en') ? '' : 'none';
     });
     document.querySelectorAll('.lang-zh').forEach(el => {
-        el.style.display = (lang === 'zh') ? getDefaultDisplay(el.tagName) : 'none';
+        el.style.display = (lang === 'zh') ? '' : 'none';
     });
 }
-
-/* 默认英文 */
 setLang('en');
 </script>
 
