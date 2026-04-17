@@ -191,7 +191,15 @@ body {
     .hero-inner h1 {
         font-size: 2.2rem;
     }
-
+html, body {
+  font-family:
+    "Noto Serif SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    system-ui,
+    sans-serif !important;
+  color: #222;
+}
     .section {
         padding: 120px 20px;
     }
