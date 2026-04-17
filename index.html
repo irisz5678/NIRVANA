@@ -165,3 +165,20 @@ setLang('en');
 
 </body>
 </html>
+<script>
+function setLang(lang) {
+    document.querySelectorAll('.lang-en').forEach(el => {
+        el.style.display = (lang === 'en') ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-zh').forEach(el => {
+        el.style.display = (lang === 'zh') ? '' : 'none';
+    });
+
+    // 记住选择
+    localStorage.setItem('siteLang', lang);
+}
+
+// 页面加载时读取记录
+const savedLang = localStorage.getItem('siteLang') || 'en';
+setLang(savedLang);
+</script>
