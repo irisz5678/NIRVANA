@@ -2,184 +2,54 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>About Us | Nirvana</title>
+  <title>NIRVANA 富贵山庄</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ 唯一且正确的 CSS 引入 -->
+  <!-- 样式 -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-
-<body>
-
-<!-- ================= Header ================= -->
-<header class="site-header">
-    <div class="header-inner">
-        <div class="logo">NIRVANA富贵山庄</div>
-
-        <div class="header-right">
-            <button type="button" class="lang-btn" onclick="setLang('en')">EN</button>
-            <button type="button" class="lang-btn" onclick="setLang('zh')">中文</button>
-        </div>
+  <!-- 顶部导航 -->
+  <header class="header">
+    <div class="logo">NIRVANA 富贵山庄</div>
+    <div class="lang-switch">
+      <button onclick="setLang('zh')">中文</button>
+      <button onclick="setLang('en')">EN</button>
     </div>
-</header>
+  </header>
 
-<!-- ================= Hero ================= -->
-<section class="about-hero">
-    <div class="hero-inner">
-        <h1>
-            <span class="lang-en">About Nirvana Memorial Garden</span>
-            <span class="lang-zh">关于骨灰纪念园</span>
-        </h1>
-        <p class="lang-en">Honouring Life. Preserving Memories. Creating Legacies.</p>
-        <p class="lang-zh">慎终追远 · 尊重生命 · 永续传承</p>
-    </div>
-</section>
+  <!-- 中文内容 -->
+  <main class="content lang-zh">
+    <h1>欢迎来到 NIRVANA 富贵山庄</h1>
 
-<!-- ================= Our Story ================= -->
-<section class="section">
-    <div class="container narrow">
-        <h2 class="section-title">
-            <span class="lang-en">Our Story</span>
-            <span class="lang-zh">我们的故事</span>
-        </h2>
+    <p>
+      富贵山庄是一处理想的静修之所，融合自然山林、宁静氛围与高品质生活体验，
+      为宾客提供远离喧嚣、回归内心的尊贵空间。
+    </p>
 
-        <p class="lang-en">
-            Nirvana Memorial Garden was founded with the belief
-            that every life deserves to be remembered with dignity.
-        </p>
+    <p>
+      在这里，自然与建筑和谐共生，每一个细节都经过精心设计，
+      只为带来真正的放松与重生。
+    </p>
+  </main>
 
-        <p class="lang-zh">
-            骨灰纪念园秉持「生命值得被尊重与纪念」的信念，
-            致力于为每一个生命留下庄严而恒久的记忆。
-        </p>
-    </div>
-</section>
+  <!-- English content -->
+  <main class="content lang-en">
+    <h1>Welcome to NIRVANA Estate</h1>
 
-<!-- ================= Philosophy（✅ 已修好） ================= -->
-<section class="section light-bg">
-    <div class="container">
-        <h2 class="section-title">
-            <span class="lang-en">Our Philosophy</span>
-            <span class="lang-zh">我们的理念</span>
-        </h2>
+    <p>
+      Nirvana Estate is a sanctuary of nature, serenity, and refined living.
+      It offers a peaceful retreat away from the noise of modern life.
+    </p>
 
-        <div class="features-grid">
+    <p>
+      Carefully designed spaces blend architecture with the surrounding landscape,
+      creating an experience of true relaxation and renewal.
+    </p>
+  </main>
 
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Integrity</h4>
-                <h4 class="lang-zh">诚信</h4>
-
-                <p class="lang-en">
-                    We uphold honesty and transparency in everything we do.
-                </p>
-                <p class="lang-zh">
-                    我们在所有服务与承诺中，坚持诚实、透明与责任。
-                </p>
-            </div>
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Excellence</h4>
-                <h4 class="lang-zh">卓越</h4>
-
-                <p class="lang-en">
-                    We deliver excellence in every detail, tailored to you.
-                </p>
-                <p class="lang-zh">
-                    我们追求每一个细节的卓越，用心服务每一个家庭。
-                </p>
-            </div>
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Compassion</h4>
-                <h4 class="lang-zh">关怀</h4>
-
-                <p class="lang-en">
-                    We serve with empathy and kindness at every step.
-                </p>
-                <p class="lang-zh">
-                    我们以同理心、尊重与关怀，陪伴人生的重要时刻。
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ================= Contact ================= -->
-<section class="section light-bg">
-    <div class="container narrow">
-        <h2 class="section-title">
-            <span class="lang-en">Contact Us</span>
-            <span class="lang-zh">联系我们</span>
-        </h2>
-
-        <div class="contact-card">
-            <p class="contact-line lang-en">Contact: Wendy Chen</p>
-            <p class="contact-line lang-zh">联系人：Wendy Chen</p>
-            <p class="contact-line lang-en">Phone: <a href="tel:+6592381366">+65 9238 1366</a></p>
-            <p class="contact-line lang-zh">手机号：<a href="tel:+6592381366">+65 9238 1366</a></p>
-            <p class="contact-line lang-en">Email: <a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
-            <p class="contact-line lang-zh">邮箱：<a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
-        </div>
-    </div>
-</section>
-
-<!-- ================= Footer ================= -->
-<footer class="site-footer">
-    <p>NIRVANA MEMORIAL GARDEN</p>
-    <p class="small">© 2026 Nirvana. All Rights Reserved.</p>
-</footer>
-
-<!-- ================= Language Script ================= -->
-<script>
-function getDefaultDisplay(tagName) {
-    tagName = tagName.toLowerCase();
-    if (tagName === 'span' || tagName === 'a' || tagName === 'strong' || tagName === 'em') {
-        return 'inline';
-    }
-    return 'block';
-}
-
-function setLang(lang) {
-    document.documentElement.lang = (lang === 'zh') ? 'zh' : 'en';
-
-    document.querySelectorAll('.lang-en').forEach(el => {
-        el.style.display = (lang === 'en') ? getDefaultDisplay(el.tagName) : 'none';
-    });
-    document.querySelectorAll('.lang-zh').forEach(el => {
-        el.style.display = (lang === 'zh') ? getDefaultDisplay(el.tagName) : 'none';
-    });
-}
-
-/* 默认英文 */
-setLang('en');
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-<script>
-function setLang(lang) {
-    document.querySelectorAll('.lang-en').forEach(el => {
-        el.style.display = (lang === 'en') ? '' : 'none';
-    });
-    document.querySelectorAll('.lang-zh').forEach(el => {
-        el.style.display = (lang === 'zh') ? '' : 'none';
-    });
-
-    // 记住选择
-    localStorage.setItem('siteLang', lang);
-}
-
-// 页面加载时读取记录
-const savedLang = localStorage.getItem('siteLang') || 'en';
-setLang(savedLang);
-</script>
