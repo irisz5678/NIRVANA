@@ -1,98 +1,89 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>NIRVANA 富贵山庄</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 高端衬线字体（英文）+ 中文兜底 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>NIRVANA · 富贵山庄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
 <!-- 顶部导航 -->
-<header class="header">
-  <div class="brand">
-    <span class="brand-en">NIRVANA</span>
-    <span class="brand-zh">富贵山庄</span>
-  </div>
-
-  <div class="lang-switch">
+<header class="nav">
+  <div class="nav-logo">NIRVANA</div>
+  <div class="nav-lang">
     <button onclick="setLang('zh')">中文</button>
     <button onclick="setLang('en')">EN</button>
   </div>
 </header>
 
-<!-- Hero -->
+<!-- Hero 模板级 -->
 <section class="hero">
-  <div class="hero-inner lang-zh">
-    <h1>回归宁静 · 安住内心</h1>
-    <p>
-      富贵山庄是一处理想的静修之所，融合自然山林、宁静氛围与高品质生活体验，
-      为宾客提供远离喧嚣、回归内心的尊贵空间。
-    </p>
+  <div class="overlay"></div>
+
+  <div class="hero-content lang-zh">
+    <h1>富贵山庄</h1>
+    <p>一处为身心而生的静修之所</p>
   </div>
 
-  <div class="hero-inner lang-en">
-    <h1>Return to Stillness</h1>
-    <p>
-      Nirvana Estate is a sanctuary of nature, serenity, and refined living—a
-      place designed for true retreat, reflection, and renewal.
-    </p>
+  <div class="hero-content lang-en">
+    <h1>NIRVANA Estate</h1>
+    <p>A Sanctuary for Stillness & Renewal</p>
   </div>
 </section>
 
-<!-- 正文 -->
-<section class="content">
-  <div class="content-inner lang-zh">
-    <h2>与自然共生</h2>
-    <p>
-      在这里，自然与建筑和谐共生。每一处空间都经过精心设计，
-      以尊重山林原貌，为身心带来真正的放松与重生。
-    </p>
+<!-- 模板信息块 -->
+<section class="cards lang-zh">
+  <div class="card">
+    <h3>自然</h3>
+    <p>与山林共生的静谧环境</p>
   </div>
-
-  <div class="content-inner lang-en">
-    <h2>In Harmony with Nature</h2>
-    <p>
-      Architecture and landscape exist in quiet balance.
-      Every detail is designed to honor the natural surroundings
-      and offer a deeply restorative experience.
-    </p>
+  <div class="card">
+    <h3>宁静</h3>
+    <p>远离城市节奏的慢生活</p>
+  </div>
+  <div class="card">
+    <h3>重生</h3>
+    <p>为身心预留的修复空间</p>
   </div>
 </section>
 
-<footer class="footer">
-  © NIRVANA Estate
+<section class="cards lang-en">
+  <div class="card">
+    <h3>Nature</h3>
+    <p>A deep connection with landscape</p>
+  </div>
+  <div class="card">
+    <h3>Stillness</h3>
+    <p>Life beyond urban tempo</p>
+  </div>
+  <div class="card">
+    <h3>Renewal</h3>
+    <p>A place to restore the self</p>
+  </div>
+</section>
+
 <!-- 联系方式 -->
 <section class="contact">
-  <div class="contact-inner lang-zh">
-    <h2>联系我们</h2>
+  <div class="lang-zh">
+    <h2>预约与咨询</h2>
     <p>
-  如需预约参观或了解更多信息，欢迎通过以下方式与我们联系：<br><br>
-  邮箱：info@nirvanaestate.com<br>
-  电话：+65 6123 4567<br>
-  地址：Jurong Town，新加坡
-</p>
+      info@nirvanaestate.com<br>
+      +65 6123 4567<br>
+      Jurong Town, Singapore
+    </p>
   </div>
 
-  <div class="contact-inner lang-en">
-    <h2>Contact Us</h2>
+  <div class="lang-en">
+    <h2>Private Enquiries</h2>
     <p>
-  For private visits or further inquiries, please reach us via:<br><br>
-  Email: info@nirvanaestate.com<br>
-  Tel: +65 6123 4567<br>
-  Location: Jurong Town, Singapore
-</p>
-
+      info@nirvanaestate.com<br>
+      +65 6123 4567<br>
+      Jurong Town, Singapore
+    </p>
   </div>
-</section>  
-</footer>
+</section>
 
 <script src="script.js"></script>
 </body>
