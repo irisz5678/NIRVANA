@@ -5,46 +5,19 @@
 <title>NIRVANA · Memorial Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: #f2f2f2;
   color: #111;
-  background: #fafafa;
 }
 .lang-en { display: none; }
 
-/* 顶部 */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 24px 48px;
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
-  z-index: 10;
-}
-.nav-logo {
-  font-family: "Playfair Display", serif;
-  letter-spacing: 3px;
-}
-.nav button {
-  background: none;
-  border: none;
-  color: #fff;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
 /* Hero */
 .hero {
-  height: 100vh;
   position: relative;
+  height: 100vh;
   overflow: hidden;
 }
 .hero img {
@@ -66,27 +39,23 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 0 24px;
   color: #fff;
+  padding: 0 24px;
 }
 .hero h1 {
-  font-family: "Playfair Display", serif;
   font-size: 56px;
-  letter-spacing: 4px;
   margin-bottom: 24px;
 }
 .hero p {
   font-size: 18px;
-  line-height: 1.8;
-  opacity: 0.9;
 }
 
 /* Section */
 .section {
-  padding: 140px 24px;
+  padding: 120px 24px;
   text-align: center;
 }
 .section-inner {
@@ -95,40 +64,22 @@ body {
 }
 .section h2 {
   font-size: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-/* 空间图 */
-.space {
-  position: relative;
-}
+/* Space */
 .space img {
   width: 100%;
   height: 500px;
   object-fit: cover;
   display: block;
 }
-.space::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(255,255,255,0.88);
-}
 
 /* Contact */
 .contact {
-  padding: 140px 24px;
+  padding: 120px 24px;
   background: #111;
   color: #eee;
-  text-align: center;
-}
-.contact h2 { margin-bottom: 28px; }
-
-/* Footer */
-.footer {
-  padding: 40px;
-  font-size: 13px;
-  color: #777;
   text-align: center;
 }
 </style>
@@ -136,26 +87,17 @@ body {
 
 <body>
 
-<header class="nav">
-  <div class="nav-logo">NIRVANA</div>
-  <div>
-    <button onclick="setLang('zh')">中文</button>
-    <button onclick="setLang('en')">EN</button>
-  </div>
-</header>
-
 <section class="hero">
-  <!-- ✅ 明确 img：浏览器一定加载 -->
-  <img src="https://images.unsplash.com/photo-1601048365331-0edb24b5374b?auto=format&fit=crop&w=2000&q=80" alt="Memorial Hall">
+  <img src="hero.jpg" alt="Memorial Space">
 
   <div class="hero-content lang-zh">
     <h1>礼赞生命 · 永恒纪念</h1>
-    <p>以尊重、宁静与关怀，<br>陪伴每一段生命完成体面的告别。</p>
+    <p>以尊重、宁静与关怀，陪伴每一段生命完成体面的告别。</p>
   </div>
 
   <div class="hero-content lang-en">
     <h1>Honouring Life</h1>
-    <p>With dignity, serenity and care,<br>we support families through remembrance.</p>
+    <p>With dignity, serenity and care, we support families through remembrance.</p>
   </div>
 </section>
 
@@ -171,23 +113,19 @@ body {
 </section>
 
 <section class="space">
-  <img src="https://images.unsplash.com/photo-1582719478148-d2b1b29f8f3c?auto=format&fit=crop&w=2000&q=80" alt="Ceremony Space">
+  <img src="space.jpg" alt="Ceremony Space">
 </section>
 
 <section class="contact">
   <div class="lang-zh">
     <h2>我们始终在此</h2>
-    <p>info@nirvanaestate.com<br>+65 6123 4567<br>Singapore</p>
+    <p>info@nirvanaestate.com<br>+65 6123 4567</p>
   </div>
   <div class="lang-en">
     <h2>We Are Here to Support You</h2>
-    <p>info@nirvanaestate.com<br>+65 6123 4567<br>Singapore</p>
+    <p>info@nirvanaestate.com<br>+65 6123 4567</p>
   </div>
 </section>
-
-<footer class="footer">
-  © NIRVANA Memorial Services
-</footer>
 
 <script>
 function setLang(lang) {
