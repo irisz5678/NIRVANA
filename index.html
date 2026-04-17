@@ -5,23 +5,20 @@
 <title>NIRVANA · Memorial Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 字体 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ===== 全局 ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
   color: #111;
   background: #fafafa;
-  line-height: 1.8;
 }
 .lang-en { display: none; }
 
-/* ===== 顶部 ===== */
+/* 顶部 */
 .nav {
   position: fixed;
   top: 0;
@@ -44,34 +41,52 @@ body {
   cursor: pointer;
 }
 
-/* ===== Hero（真实空间图） ===== */
+/* Hero */
 .hero {
   height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("https://images.unsplash.com/photo-1601048365331-0edb24b5374b?auto=format&fit=crop&w=2000&q=80")
-    center / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0 24px;
+  color: #fff;
 }
 .hero h1 {
   font-family: "Playfair Display", serif;
   font-size: 56px;
   letter-spacing: 4px;
-  color: #fff;
   margin-bottom: 24px;
 }
 .hero p {
-  color: rgba(255,255,255,.9);
   font-size: 18px;
+  line-height: 1.8;
+  opacity: 0.9;
 }
 
-/* ===== Section ===== */
+/* Section */
 .section {
   padding: 140px 24px;
-  background: #fff;
   text-align: center;
 }
 .section-inner {
@@ -83,15 +98,24 @@ body {
   margin-bottom: 32px;
 }
 
-/* ===== 空间图 Section ===== */
+/* 空间图 */
 .space {
-  background:
-    linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)),
-    url("https://images.unsplash.com/photo-1582719478148-d2b1b29f8f3c?auto=format&fit=crop&w=2000&q=80")
-    center / cover no-repeat;
+  position: relative;
+}
+.space img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+.space::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.88);
 }
 
-/* ===== Contact ===== */
+/* Contact */
 .contact {
   padding: 140px 24px;
   background: #111;
@@ -100,12 +124,12 @@ body {
 }
 .contact h2 { margin-bottom: 28px; }
 
-/* ===== Footer ===== */
+/* Footer */
 .footer {
   padding: 40px;
-  text-align: center;
   font-size: 13px;
   color: #777;
+  text-align: center;
 }
 </style>
 </head>
@@ -121,11 +145,15 @@ body {
 </header>
 
 <section class="hero">
-  <div class="lang-zh">
+  <!-- ✅ 明确 img：浏览器一定加载 -->
+  <img src="https://images.unsplash.com/photo-1601048365331-0edb24b5374b?auto=format&fit=crop&w=2000&q=80" alt="Memorial Hall">
+
+  <div class="hero-content lang-zh">
     <h1>礼赞生命 · 永恒纪念</h1>
     <p>以尊重、宁静与关怀，<br>陪伴每一段生命完成体面的告别。</p>
   </div>
-  <div class="lang-en">
+
+  <div class="hero-content lang-en">
     <h1>Honouring Life</h1>
     <p>With dignity, serenity and care,<br>we support families through remembrance.</p>
   </div>
@@ -142,15 +170,8 @@ body {
   </div>
 </section>
 
-<section class="section space">
-  <div class="section-inner lang-zh">
-    <h2>庄重而私密的纪念空间</h2>
-    <p>让告别成为一段被温柔承载的过程。</p>
-  </div>
-  <div class="section-inner lang-en">
-    <h2>Spaces of Dignity and Reflection</h2>
-    <p>Spaces designed for quiet remembrance.</p>
-  </div>
+<section class="space">
+  <img src="https://images.unsplash.com/photo-1582719478148-d2b1b29f8f3c?auto=format&fit=crop&w=2000&q=80" alt="Ceremony Space">
 </section>
 
 <section class="contact">
