@@ -1,146 +1,86 @@
-/* 基础重置 */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    system-ui,
-    sans-serif;
-  color: #1f1f1f;
-  background: #fafafa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  color: #111;
 }
+
+.lang-en { display: none; }
 
 /* 顶部导航 */
-.header {
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  border-bottom: 1px solid #e6e6e6;
-  background: #fff;
+  color: white;
+  z-index: 10;
 }
 
-.brand {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.brand-en {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  letter-spacing: 2px;
-}
-
-.brand-zh {
-  font-size: 16px;
-  color: #555;
-}
-
-.lang-switch button {
-  margin-left: 8px;
-  padding: 4px 10px;
-  border: 1px solid #ccc;
-  background: transparent;
+.nav button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 10px;
   cursor: pointer;
 }
 
 /* Hero */
 .hero {
-  padding: 140px 24px;
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0.15)
-    ),
-    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=80");
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  color: #ffffff;
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80") center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-
-.hero-inner {
-  max-width: 780px;
-  margin: 0 auto;
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
 }
 
-.hero h1 {
-  color: #ffffff;
-}
-
-.hero p {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-
-/* 正文 */
-.content {
-  padding: 100px 24px;
-  background: #fff;
-}
-
-.content-inner {
-  max-width: 720px;
-  margin: 0 auto;
+.hero-content {
+  position: relative;
+  color: white;
   text-align: center;
 }
 
-.content h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
+.hero-content h1 {
+  font-size: 64px;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
 }
 
-.content p {
-  font-size: 17px;
-  line-height: 1.8;
+.hero-content p {
+  font-size: 18px;
+  opacity: 0.9;
 }
 
-/* Footer */
-.footer {
-  padding: 40px 0;
+/* 卡片 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 120px;
   text-align: center;
-  font-size: 14px;
-  color: #888;
 }
 
-/* 语言控制 */
-.lang-en {
-  display: none;
+.card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
 }
-/* =========================
-   联系方式 Contact
-   ========================= */
 
+/* 联系方式 */
 .contact {
-  padding: 100px 24px;
-  background: #f4f4f2;
+  padding: 120px;
   text-align: center;
-}
-
-.contact-inner {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.contact h2 {
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-
-.contact p {
-  font-size: 17px;
-  line-height: 2;
-  color: #444;
-}
-
-.contact a {
-  color: inherit;
-  text-decoration: underline;
+  background: #f4f4f2;
 }
