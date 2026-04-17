@@ -1,163 +1,371 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>About Us | Nirvana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <title>关于我们要 | 永恒生命服务</title>
+    <!-- 引入 Google Fonts: Playfair Display (标题) 和 Lato (正文) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. 核心变量与重置 --- */
+        :root {
+            --gold: #c5a059;       /* 品牌金 */
+            --dark: #1a1a1a;       /* 深黑 */
+            --gray: #555555;       /* 正文灰 */
+            --light: #f9f9f9;      /* 背景灰 */
+            --white: #ffffff;
+            --font-serif: 'Playfair Display', serif; /* 优雅衬线体 */
+            --font-sans: 'Lato', sans-serif;         /* 现代无衬线体 */
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            color: var(--gray);
+            line-height: 1.8;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- 2. 导航栏 (固定顶部) --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: transparent; /* 初始透明 */
+        }
+
+        /* 滚动后的导航栏样式 */
+        header.scrolled {
+            background: var(--white);
+            padding: 15px 50px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-family: var(--font-serif);
+            letter-spacing: 2px;
+            color: var(--white);
+            font-weight: bold;
+        }
+        
+        header.scrolled .logo { color: var(--dark); }
+
+        nav ul { display: flex; gap: 40px; }
+        nav a {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+            position: relative;
+        }
+
+        header.scrolled nav a { color: var(--dark); }
+
+        /* 导航下划线动画 */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after { width: 100%; }
+
+        /* --- 3. 首屏 Hero (视差效果) --- */
+        .hero {
+            height: 80vh; /* 占据80%屏幕高度 */
+            /* 这里使用了一张更有质感的建筑/自然图 */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 视差滚动关键代码 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn Up 1.5s ease; /* 入场动画 */
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- 4. 通用容器 --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto;
+        }
+
+        /* --- 5. 故事板块 (左图右文) --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-img {
+            position: relative;
+        }
+
+        .story-img img {
+            border-radius: 2px;
+            box-shadow: 30px 30px 0px var(--light); /* 装饰性阴影 */
+        }
+
+        .story-text h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 35px;
+            background: var(--gold);
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+        }
+
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        /* --- 6. 服务/特色板块 (三列卡片) --- */
+        .features-section {
+            background-color: var(--light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 50px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .icon-box {
+            font-size: 40px;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- 7. 页脚 --- */
+        footer {
+            background: var(--dark);
+            color: #888;
+            padding: 80px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 12px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        /* --- 动画定义 --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 手机端适配 --- */
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; } /* 简单隐藏，实际需做汉堡菜单 */
+            .hero h1 { font-size: 2.5rem; }
+            .story-grid { grid-template-columns: 1fr; gap: 40px; }
+            .story-img img { box-shadow: none; }
+            .container { padding: 60px 20px; }
+        }
+    </style>
+</head>
 <body>
 
-<!-- ================= Header ================= -->
-<header class="site-header">
-    <div class="header-inner">
-        <div class="logo">NIRVANA富贵山庄</div>
+    <!-- 导航栏 -->
+    <header id="navbar">
+        <div class="logo">NIRVANA CLONE</div>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">服务方案</a></li>
+                <li><a href="#">资源中心</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="header-right">
-            <button type="button" class="lang-btn" onclick="setLang('en')">EN</button>
-            <button type="button" class="lang-btn" onclick="setLang('zh')">中文</button>
+    <!-- 首屏大图 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>礼赞生命，传承爱意</h1>
+            <p>我们致力于为您提供超越期望的生命礼赞服务，<br>让每一个瞬间都成为永恒的珍藏。</p>
         </div>
-    </div>
-</header>
+    </section>
 
-<!-- ================= Hero ================= -->
-<section class="about-hero">
-    <div class="hero-inner">
-        <h1>
-            <span class="lang-en">About Nirvana Memorial Garden</span>
-            <span class="lang-zh">关于骨灰纪念园</span>
-        </h1>
-        <p class="lang-en">Honouring Life. Preserving Memories. Creating Legacies.</p>
-        <p class="lang-zh">慎终追远 · 尊重生命 · 永续传承</p>
-    </div>
-</section>
-
-<!-- ================= Our Story ================= -->
-<section class="section">
-    <div class="container narrow">
-        <h2 class="section-title">
-            <span class="lang-en">Our Story</span>
-            <span class="lang-zh">我们的故事</span>
-        </h2>
-
-        <p class="lang-en">
-            Nirvana Memorial Garden was founded with the belief
-            that every life deserves to be remembered with dignity.
-        </p>
-
-        <p class="lang-zh">
-            骨灰纪念园秉持「生命值得被尊重与纪念」的信念，
-            致力于为每一个生命留下庄严而恒久的记忆。
-        </p>
-    </div>
-</section>
-
-<!-- ================= Philosophy（✅ 已修好） ================= -->
-<section class="section light-bg">
-    <div class="container">
-        <h2 class="section-title">
-            <span class="lang-en">Our Philosophy</span>
-            <span class="lang-zh">我们的理念</span>
-        </h2>
-
-        <div class="features-grid">
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Integrity</h4>
-                <h4 class="lang-zh">诚信</h4>
-
-                <p class="lang-en">
-                    We uphold honesty and transparency in everything we do.
-                </p>
-                <p class="lang-zh">
-                    我们在所有服务与承诺中，坚持诚实、透明与责任。
-                </p>
+    <!-- 我们的故事 -->
+    <section class="container">
+        <div class="story-grid">
+            <div class="story-img">
+                <!-- 替换为你的图片 -->
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="我们的故事">
             </div>
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Excellence</h4>
-                <h4 class="lang-zh">卓越</h4>
-
-                <p class="lang-en">
-                    We deliver excellence in every detail, tailored to you.
-                </p>
-                <p class="lang-zh">
-                    我们追求每一个细节的卓越，用心服务每一个家庭。
-                </p>
+            <div class="story-text">
+                <h3>不仅仅是服务，<br>更是对生命的尊重</h3>
+                <p>自创立以来，我们始终秉持着“以人为本”的核心理念。正如 Nirvana 所展现的那样，我们相信生命的结束并非终点，而是另一种形式的开始。</p>
+                <p>我们的团队由一群充满爱心与责任感的专家组成。我们深知每一个决定背后的重量，因此我们承诺以最透明、最专业、最温暖的态度，陪伴您走过这段特殊的旅程。</p>
+                <a href="#" class="btn-gold">了解更多</a>
             </div>
-
-            <div class="feature-item">
-                <span class="feature-icon">✦</span>
-
-                <h4 class="lang-en">Compassion</h4>
-                <h4 class="lang-zh">关怀</h4>
-
-                <p class="lang-en">
-                    We serve with empathy and kindness at every step.
-                </p>
-                <p class="lang-zh">
-                    我们以同理心、尊重与关怀，陪伴人生的重要时刻。
-                </p>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ================= Contact ================= -->
-<section class="section light-bg">
-    <div class="container narrow">
-        <h2 class="section-title">
-            <span class="lang-en">Contact Us</span>
-            <span class="lang-zh">联系我们</span>
-        </h2>
-
-        <div class="contact-card">
-            <p class="contact-line lang-en">Contact: Wendy Chen</p>
-            <p class="contact-line lang-zh">联系人：Wendy Chen</p>
-            <p class="contact-line lang-en">Phone: <a href="tel:+6592381366">+65 9238 1366</a></p>
-            <p class="contact-line lang-zh">手机号：<a href="tel:+6592381366">+65 9238 1366</a></p>
-            <p class="contact-line lang-en">Email: <a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
-            <p class="contact-line lang-zh">邮箱：<a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
+    <!-- 核心价值 -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>我们的承诺</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="features-grid">
+                <!-- 卡片 1 -->
+                <div class="feature-card">
+                    <div class="icon-box">💎</div>
+                    <h4>诚信为本</h4>
+                    <p>我们坚持透明定价，杜绝任何隐形消费。您的信任是我们最宝贵的资产，我们将以诚相待，让您安心无忧。</p>
+                </div>
+                <!-- 卡片 2 -->
+                <div class="feature-card">
+                    <div class="icon-box">🕊️</div>
+                    <h4>人文关怀</h4>
+                    <p>超越传统的服务模式，我们提供的是心灵的慰藉。每一个细节都经过精心设计，只为给予家属最大的支持。</p>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="feature-card">
+                    <div class="icon-box">🏆</div>
+                    <h4>卓越品质</h4>
+                    <p>从场地布置到仪式流程，我们追求极致的完美。用高标准的品质，为生命画上一个圆满的句号。</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ================= Footer ================= -->
-<footer class="site-footer">
-    <p>NIRVANA MEMORIAL GARDEN</p>
-    <p class="small">© 2026 Nirvana. All Rights Reserved.</p>
-</footer>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-logo">NIRVANA CLONE</div>
+        <p>123 Life Avenue, Peaceful City, Country</p>
+        <p>+65 1234 5678 | contact@example.com</p>
+        <div class="copyright">
+            &copy; 2026 Nirvana Clone. All Rights Reserved.
+        </div>
+    </footer>
 
-<!-- ================= Language Script ================= -->
-<script>
-function getDefaultDisplay(tagName) {
-    tagName = tagName.toLowerCase();
-    if (tagName === 'span' || tagName === 'a' || tagName === 'strong' || tagName === 'em') {
-        return 'inline';
-    }
-    return 'block';
-}
-
-function setLang(lang) {
-    document.documentElement.lang = (lang === 'zh') ? 'zh' : 'en';
-
-    document.querySelectorAll('.lang-en').forEach(el => {
-        el.style.display = (lang === 'en') ? getDefaultDisplay(el.tagName) : 'none';
-    });
-    document.querySelectorAll('.lang-zh').forEach(el => {
-        el.style.display = (lang === 'zh') ? getDefaultDisplay(el.tagName) : 'none';
-    });
-}
-
-/* 默认英文 */
-setLang('en');
-</script>
+    <!-- 简单的 JS 交互：滚动时改变导航栏样式 -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
 </html>
