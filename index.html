@@ -1,107 +1,166 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>NIRVANA · Memorial Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>NIRVANA · Memorial Services</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 字体（国际高端纪念类常用） -->
-  <link rel="preconnect" href="  <link rel="preconnect" href="https://fonts.gstatic.com" crossoriginm/css2?family=Playfair+Display:wght@400;500;600&display=swap"->
-  <link rel="stylesheet" href="style.css->
+<!-- 字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== 全局 ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  color: #111;
+  background: #fafafa;
+  line-height: 1.8;
+}
+.lang-en { display: none; }
+
+/* ===== 顶部 ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  z-index: 10;
+}
+.nav-logo {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+}
+.nav button {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* ===== Hero（真实空间图） ===== */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1601048365331-0edb24b5374b?auto=format&fit=crop&w=2000&q=80")
+    center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 56px;
+  letter-spacing: 4px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.hero p {
+  color: rgba(255,255,255,.9);
+  font-size: 18px;
+}
+
+/* ===== Section ===== */
+.section {
+  padding: 140px 24px;
+  background: #fff;
+  text-align: center;
+}
+.section-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+/* ===== 空间图 Section ===== */
+.space {
+  background:
+    linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)),
+    url("https://images.unsplash.com/photo-1582719478148-d2b1b29f8f3c?auto=format&fit=crop&w=2000&q=80")
+    center / cover no-repeat;
+}
+
+/* ===== Contact ===== */
+.contact {
+  padding: 140px 24px;
+  background: #111;
+  color: #eee;
+  text-align: center;
+}
+.contact h2 { margin-bottom: 28px; }
+
+/* ===== Footer ===== */
+.footer {
+  padding: 40px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
 <header class="nav">
   <div class="nav-logo">NIRVANA</div>
-  <div class="nav-lang">
+  <div>
     <button onclick="setLang('zh')">中文</button>
     <button onclick="setLang('en')">EN</button>
   </div>
 </header>
 
-<!-- Hero：真实纪念空间 -->
 <section class="hero">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content lang-zh">
+  <div class="lang-zh">
     <h1>礼赞生命 · 永恒纪念</h1>
-    <p>
-      以尊重、宁静与关怀，<br>
-      陪伴每一段生命完成体面的告别。
-    </p>
+    <p>以尊重、宁静与关怀，<br>陪伴每一段生命完成体面的告别。</p>
   </div>
-
-  <div class="hero-content lang-en">
+  <div class="lang-en">
     <h1>Honouring Life</h1>
-    <p>
-      With dignity, serenity and care,<br>
-      we support families through meaningful remembrance.
-    </p>
+    <p>With dignity, serenity and care,<br>we support families through remembrance.</p>
   </div>
 </section>
 
-<!-- 理念 -->
 <section class="section">
   <div class="section-inner lang-zh">
     <h2>不仅仅是服务，更是对生命的尊重</h2>
-    <p>
-      我们相信，每一段生命都值得被郑重对待。<br><br>
-      从告别仪式到纪念空间，<br>
-      我们以专业、克制与敬意，<br>
-      陪伴家属走过人生中最重要的时刻之一。
-    </p>
+    <p>我们相信，每一段生命都值得被郑重对待。</p>
   </div>
-
   <div class="section-inner lang-en">
     <h2>More Than a Service</h2>
-    <p>
-      We believe every life deserves to be honoured with dignity.<br><br>
-      Through thoughtful ceremonies and serene spaces,<br>
-      we support families with professionalism, compassion,
-      and respect.
-    </p>
+    <p>Every life deserves to be honoured with dignity.</p>
   </div>
 </section>
 
-<!-- 空间（真实室内空间） -->
 <section class="section space">
   <div class="section-inner lang-zh">
     <h2>庄重而私密的纪念空间</h2>
-    <p>
-      每一处空间皆为宁静、尊严与个人记忆而设计，<br>
-      让告别成为一段被温柔承载的过程。
-    </p>
+    <p>让告别成为一段被温柔承载的过程。</p>
   </div>
-
   <div class="section-inner lang-en">
     <h2>Spaces of Dignity and Reflection</h2>
-    <p>
-      Every space is designed for quiet reflection,
-      privacy and remembrance,
-      allowing farewells to unfold with grace.
-    </p>
+    <p>Spaces designed for quiet remembrance.</p>
   </div>
 </section>
 
-<!-- 联系 -->
 <section class="contact">
-  <div class="contact-inner lang-zh">
+  <div class="lang-zh">
     <h2>我们始终在此</h2>
-    <p>
-      如您需要协助或了解相关安排，<br>
-      我们将以尊重与耐心陪伴您。<br><br>
-      📧 info@nirvanaestate.com<br>
-      📞 +65 6123 4567<br>
-      📍 Singapore
-    </p>
+    <p>info@nirvanaestate.com<br>+65 6123 4567<br>Singapore</p>
   </div>
-
-  <div class="contact-inner lang-en">
+  <div class="lang-en">
     <h2>We Are Here to Support You</h2>
-    <p>
-      If you need guidance or assistance,<br>
-      our team is here with care and discretion.<br><br>
-      Email: info@nirvanaestate.com<br>
-      Tel: +65 6123 4567<br>
-      Location: Singapore
-    </p>
+    <p>info@nirvanaestate.com<br>+65 6123 4567<br>Singapore</p>
   </div>
 </section>
 
@@ -109,6 +168,13 @@
   © NIRVANA Memorial Services
 </footer>
 
-<!-- 脚本 -->
-<script src="script</body>
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-zh').forEach(e => e.style.display = lang==='zh'?'block':'none');
+  document.querySelectorAll('.lang-en').forEach(e => e.style.display = lang==='en'?'block':'none');
+}
+setLang('zh');
+</script>
+
+</body>
 </html>
