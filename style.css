@@ -10,12 +10,12 @@ body {
   background: #fafafa;
 }
 
-/* 语言 */
+/* 语言控制 */
 .lang-en {
   display: none;
 }
 
-/* 顶部导航 */
+/* 导航 */
 .nav {
   position: fixed;
   top: 0;
@@ -43,11 +43,10 @@ body {
   cursor: pointer;
 }
 
-/* Hero */
+/* Hero：真实殡葬空间实拍 */
 .hero {
   height: 100vh;
-  background:
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80")
+  background: url("https://images.unsplash.com/photo-1601048365331-0edb24b5374b?auto=format&fit=crop&w=2000&q=80")
     center / cover no-repeat;
   position: relative;
   display: flex;
@@ -82,15 +81,11 @@ body {
   opacity: 0.9;
 }
 
-/* Section */
+/* 通用 Section */
 .section {
   padding: 140px 24px;
   background: #fff;
   text-align: center;
-}
-
-.section.light {
-  background: #f4f4f2;
 }
 
 .section-inner {
@@ -110,7 +105,15 @@ body {
   color: #333;
 }
 
-/* Contact */
+/* 空间区：真实室内空间 */
+.section.space {
+  background:
+    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+    url("https://images.unsplash.com/photo-1582719478148-d2b1b29f8f3c?auto=format&fit=crop&w=2000&q=80")
+    center / cover no-repeat;
+}
+
+/* 联系 */
 .contact {
   padding: 140px 24px;
   background: #111;
@@ -126,7 +129,6 @@ body {
 .contact h2 {
   font-size: 30px;
   margin-bottom: 28px;
-  font-weight: 500;
 }
 
 .contact p {
@@ -141,5 +143,4 @@ body {
   text-align: center;
   font-size: 13px;
   color: #777;
-  background: #fafafa;
 }
