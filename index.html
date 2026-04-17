@@ -1,156 +1,163 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>NIRVANA · About Us</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-  background: #f6f6f6;
-  color: #1a1a1a;
-  line-height: 1.9;
-}
-
-/* Hero */
-.hero {
-  min-height: 70vh;
-  background: #9a9a9a; /* 故意不用图片 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 80px 24px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 24px;
-  letter-spacing: 2px;
-}
-
-.hero p {
-  max-width: 640px;
-  margin: 0 auto;
-  color: rgba(255,255,255,0.9);
-  font-size: 18px;
-}
-
-/* Section */
-.section {
-  padding: 120px 24px;
-  background: #fff;
-}
-
-.section.alt {
-  background: #f0f0f0;
-}
-
-.section-inner {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.section h2 {
-  font-size: 32px;
-  font-weight: 500;
-  margin-bottom: 32px;
-}
-
-/* 文本 */
-.section p {
-  font-size: 17px;
-  margin-bottom: 20px;
-}
-
-/* Contact */
-.contact {
-  background: #111;
-  color: #eaeaea;
-  padding: 120px 24px;
-  text-align: center;
-}
-
-.contact h2 {
-  font-size: 28px;
-  margin-bottom: 24px;
-}
-
-/* Footer */
-.footer {
-  padding: 40px;
-  text-align: center;
-  font-size: 13px;
-  color: #777;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>About Us | Nirvana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- Hero -->
-<section class="hero">
-  <div>
-    <h1>礼赞生命 · 永恒纪念</h1>
-    <p>
-      我们以尊重、宁静与关怀，  
-      陪伴每一个家庭，完成一段庄重而体面的告别。
-    </p>
-  </div>
+<!-- ================= Header ================= -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="logo">NIRVANA富贵山庄</div>
+
+        <div class="header-right">
+            <button type="button" class="lang-btn" onclick="setLang('en')">EN</button>
+            <button type="button" class="lang-btn" onclick="setLang('zh')">中文</button>
+        </div>
+    </div>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="about-hero">
+    <div class="hero-inner">
+        <h1>
+            <span class="lang-en">About Nirvana Memorial Garden</span>
+            <span class="lang-zh">关于骨灰纪念园</span>
+        </h1>
+        <p class="lang-en">Honouring Life. Preserving Memories. Creating Legacies.</p>
+        <p class="lang-zh">慎终追远 · 尊重生命 · 永续传承</p>
+    </div>
 </section>
 
-<!-- About -->
+<!-- ================= Our Story ================= -->
 <section class="section">
-  <div class="section-inner">
-    <h2>不仅仅是服务，更是对生命的尊重</h2>
-    <p>
-      我们相信，每一段生命都值得被郑重对待。  
-      无论信仰、文化或背景，告别都应建立在尊严与理解之上。
-    </p>
-    <p>
-      我们的工作并非快速完成流程，  
-      而是在最脆弱的时刻，为家属提供可靠、克制且值得信任的陪伴。
-    </p>
-  </div>
+    <div class="container narrow">
+        <h2 class="section-title">
+            <span class="lang-en">Our Story</span>
+            <span class="lang-zh">我们的故事</span>
+        </h2>
+
+        <p class="lang-en">
+            Nirvana Memorial Garden was founded with the belief
+            that every life deserves to be remembered with dignity.
+        </p>
+
+        <p class="lang-zh">
+            骨灰纪念园秉持「生命值得被尊重与纪念」的信念，
+            致力于为每一个生命留下庄严而恒久的记忆。
+        </p>
+    </div>
 </section>
 
-<!-- Philosophy -->
-<section class="section alt">
-  <div class="section-inner">
-    <h2>我们的理念</h2>
-    <p>
-      我们致力于将现代专业标准，与对生命的深切理解相结合，  
-      以清晰、透明、负责任的方式，协助家庭作出重要决定。
-    </p>
-    <p>
-      在每一个细节中，我们坚持专业、同理心与尊重。
-    </p>
-  </div>
+<!-- ================= Philosophy（✅ 已修好） ================= -->
+<section class="section light-bg">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="lang-en">Our Philosophy</span>
+            <span class="lang-zh">我们的理念</span>
+        </h2>
+
+        <div class="features-grid">
+
+            <div class="feature-item">
+                <span class="feature-icon">✦</span>
+
+                <h4 class="lang-en">Integrity</h4>
+                <h4 class="lang-zh">诚信</h4>
+
+                <p class="lang-en">
+                    We uphold honesty and transparency in everything we do.
+                </p>
+                <p class="lang-zh">
+                    我们在所有服务与承诺中，坚持诚实、透明与责任。
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <span class="feature-icon">✦</span>
+
+                <h4 class="lang-en">Excellence</h4>
+                <h4 class="lang-zh">卓越</h4>
+
+                <p class="lang-en">
+                    We deliver excellence in every detail, tailored to you.
+                </p>
+                <p class="lang-zh">
+                    我们追求每一个细节的卓越，用心服务每一个家庭。
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <span class="feature-icon">✦</span>
+
+                <h4 class="lang-en">Compassion</h4>
+                <h4 class="lang-zh">关怀</h4>
+
+                <p class="lang-en">
+                    We serve with empathy and kindness at every step.
+                </p>
+                <p class="lang-zh">
+                    我们以同理心、尊重与关怀，陪伴人生的重要时刻。
+                </p>
+            </div>
+
+        </div>
+    </div>
 </section>
 
-<!-- Support -->
-<section class="contact">
-  <h2>我们始终在此</h2>
-  <p>
-    如您需要咨询、协助或进一步了解相关安排，  
-    我们的团队将以耐心与尊重为您提供支持。
-  </p>
-  <p>
-    info@nirvanaestate.com<br>
-    +65 6123 4567<br>
-    Singapore
-  </p>
+<!-- ================= Contact ================= -->
+<section class="section light-bg">
+    <div class="container narrow">
+        <h2 class="section-title">
+            <span class="lang-en">Contact Us</span>
+            <span class="lang-zh">联系我们</span>
+        </h2>
+
+        <div class="contact-card">
+            <p class="contact-line lang-en">Contact: Wendy Chen</p>
+            <p class="contact-line lang-zh">联系人：Wendy Chen</p>
+            <p class="contact-line lang-en">Phone: <a href="tel:+6592381366">+65 9238 1366</a></p>
+            <p class="contact-line lang-zh">手机号：<a href="tel:+6592381366">+65 9238 1366</a></p>
+            <p class="contact-line lang-en">Email: <a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
+            <p class="contact-line lang-zh">邮箱：<a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a></p>
+        </div>
+    </div>
 </section>
 
-<footer class="footer">
-  © NIRVANA Memorial Services
+<!-- ================= Footer ================= -->
+<footer class="site-footer">
+    <p>NIRVANA MEMORIAL GARDEN</p>
+    <p class="small">© 2026 Nirvana. All Rights Reserved.</p>
 </footer>
+
+<!-- ================= Language Script ================= -->
+<script>
+function getDefaultDisplay(tagName) {
+    tagName = tagName.toLowerCase();
+    if (tagName === 'span' || tagName === 'a' || tagName === 'strong' || tagName === 'em') {
+        return 'inline';
+    }
+    return 'block';
+}
+
+function setLang(lang) {
+    document.documentElement.lang = (lang === 'zh') ? 'zh' : 'en';
+
+    document.querySelectorAll('.lang-en').forEach(el => {
+        el.style.display = (lang === 'en') ? getDefaultDisplay(el.tagName) : 'none';
+    });
+    document.querySelectorAll('.lang-zh').forEach(el => {
+        el.style.display = (lang === 'zh') ? getDefaultDisplay(el.tagName) : 'none';
+    });
+}
+
+/* 默认英文 */
+setLang('en');
+</script>
 
 </body>
 </html>
-``
