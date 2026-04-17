@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Nirvana Style</title>
+    <title>Contact Us - Nirvana Style</title>
     <style>
-        /* --- 基础样式 --- */
+        /* --- 1. 全局重置 --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -13,6 +13,7 @@
             color: #333;
             line-height: 1.8;
             background-color: #fff;
+            scroll-behavior: smooth;
         }
 
         :root {
@@ -24,7 +25,7 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* --- 导航栏 --- */
+        /* --- 2. 导航栏 --- */
         header {
             background: #fff;
             padding: 20px 50px;
@@ -50,27 +51,89 @@
         nav a { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         nav a:hover { color: var(--accent-color); }
 
-        /* --- 语言切换按钮样式 (新增) --- */
+        /* --- 语言切换下拉菜单样式 --- */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
         .lang-btn {
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 6px 15px;
+            background: var(--accent-color);
+            color: #fff;
+            border: 1px solid var(--accent-color);
+            padding: 6px 30px 6px 16px;
             font-size: 12px;
+            font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
             border-radius: 2px;
-            font-weight: bold;
+            z-index: 1001;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(197, 160, 89, 0.3);
+        }
+
+        .lang-btn::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #fff;
+            transition: 0.3s;
+        }
+
+        .lang-dropdown.active .lang-btn::after {
+            transform: translateY(-50%) rotate(180deg);
         }
 
         .lang-btn:hover {
-            background: var(--primary-color);
-            color: #fff;
+            background: #b08d4b;
         }
 
-        /* --- 首屏大图 --- */
+        .lang-dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            min-width: 120px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1002;
+            border: 1px solid #eee;
+            border-top: none;
+            border-radius: 0 0 2px 2px;
+            overflow: hidden;
+        }
+
+        .lang-dropdown-content button {
+            background: none;
+            color: var(--primary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.2s;
+        }
+
+        .lang-dropdown-content button:hover {
+            background-color: var(--light-bg);
+            color: var(--accent-color);
+        }
+
+        .lang-dropdown.active .lang-dropdown-content {
+            display: block;
+        }
+
+        /* --- 3. 首屏大图 --- */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             height: 60vh; 
@@ -98,7 +161,7 @@
             text-transform: uppercase;
         }
 
-        /* --- 通用区块 --- */
+        /* --- 4. 通用区块样式 --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -124,7 +187,7 @@
             margin: 20px auto 0;
         }
 
-        /* --- 关于我们 --- */
+        /* --- 5. 关于我们 --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -149,10 +212,24 @@
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background-color: transparent;
+            z-index: 10;
+            position: relative;
+            text-align: center;
         }
+
         .btn:hover {
             background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: scale(0.98);
             color: #fff;
         }
 
@@ -162,27 +239,89 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
-        /* --- 核心价值观 --- */
-        .features { background-color: var(--light-bg); }
-        
-        .features-grid {
+        /* --- 6. 核心价值观 --- */
+        .features { 
+            background-color: var(--light-bg); 
+            padding-top: 120px; 
+        }
+
+        .story-block {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .story-block:nth-child(even) { direction: rtl; }
+        .story-block:nth-child(even) > * { direction: ltr; }
+
+        .story-img img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: transform 0.5s ease;
+        }
+        
+        .story-img:hover img { transform: scale(1.02); }
+
+        .story-content h3 {
+            font-size: 2rem;
+            font-family: "Times New Roman", serif;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .story-content p { color: #555; margin-bottom: 20px; font-size: 1.05rem; }
+        .highlight { color: var(--accent-color); font-weight: bold; }
+
+        /* --- 7. 联系我们 --- */
+        .contact-section {
+            background-color: #fff;
+            padding-top: 120px;
+            padding-bottom: 100px;
+        }
+
+        .contact-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        .contact-item {
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            width: 30px;
             text-align: center;
         }
 
-        .feature-item { padding: 20px; }
-        .feature-icon { font-size: 40px; margin-bottom: 25px; display: block; color: var(--accent-color); }
-        .feature-item h4 { 
-            margin-bottom: 15px; 
-            font-size: 1.4rem; 
-            font-family: "Times New Roman", serif;
+        .contact-link {
             color: var(--primary-color);
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
         }
-        .feature-item p { color: #777; font-size: 0.95rem; }
 
-        /* --- 页脚 --- */
+        .contact-link:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        /* --- 8. 页脚 --- */
         footer {
             background: var(--primary-color);
             color: #fff;
@@ -192,13 +331,17 @@
         footer p { opacity: 0.6; font-size: 0.85rem; letter-spacing: 0.5px; }
         footer .copyright { margin-top: 10px; font-size: 0.75rem; }
 
-        /* --- 手机端 --- */
+        /* --- 手机端适配 --- */
         @media (max-width: 768px) {
             header { padding: 20px; }
             nav { display: none; } 
-            .about-grid { grid-template-columns: 1fr; } 
+            .about-grid, .story-block { grid-template-columns: 1fr; gap: 40px; }
+            .story-block:nth-child(even) { direction: ltr; }
             .hero h1 { font-size: 2.5rem; }
             .container { padding: 60px 20px; }
+            .features, .contact-section { padding-top: 80px; }
+            .contact-card { padding: 40px 20px; }
+            .contact-item { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -206,17 +349,24 @@
 
     <!-- 导航栏 -->
     <header>
-        <div class="logo">NIRVANA</div>
+        <div class="logo">NIRVANA 富贵山庄</div>
         <nav>
             <ul>
                 <li><a href="#" data-i18n="nav_home">Home</a></li>
-                <li><a href="#" data-i18n="nav_about">About Us</a></li>
+                <li><a href="#values" data-i18n="nav_about">About Us</a></li>
                 <li><a href="#" data-i18n="nav_services">Services</a></li>
-                <li><a href="#" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
             </ul>
         </nav>
-        <!-- 切换按钮 -->
-        <button class="lang-btn" id="lang-toggle">EN</button>
+        
+        <!-- 语言切换下拉菜单结构 -->
+        <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-btn" id="lang-toggle">English</button>
+            <div class="lang-dropdown-content">
+                <button data-lang="en">English</button>
+                <button data-lang="zh">中文</button>
+            </div>
+        </div>
     </header>
 
     <!-- 首屏大图 -->
@@ -235,7 +385,8 @@
                 <h3 data-i18n="about_subtitle">A Legacy of Care</h3>
                 <p data-i18n="about_p1">At Nirvana, we believe that every life tells a story. Established with a vision to redefine the industry, we are dedicated to providing a sanctuary of peace and professionalism during life's most significant moments.</p>
                 <p data-i18n="about_p2">Our mission goes beyond service; it is about compassion. We strive to create an environment where memories are cherished, and every detail is handled with the utmost dignity and respect.</p>
-                <a href="#" class="btn" data-i18n="about_btn">Read Our Story</a>
+                
+                <a href="#values" class="btn" data-i18n="about_btn">Read Our Story</a>
             </div>
             <div class="about-img">
                 <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Our Office">
@@ -244,24 +395,68 @@
     </section>
 
     <!-- 核心价值观 -->
-    <section class="features">
+    <section id="values" class="features">
         <div class="container">
             <h2 class="section-title" data-i18n="values_title">Our Philosophy</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="feature-icon">✦</span>
-                    <h4 data-i18n="val_1_title">Integrity</h4>
+            
+            <div class="story-block">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Integrity">
+                </div>
+                <div class="story-content">
+                    <h3 data-i18n="val_1_title">Integrity</h3>
                     <p data-i18n="val_1_desc">We uphold the highest standards of honesty and transparency in everything we do, ensuring trust remains the foundation of our service.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✦</span>
-                    <h4 data-i18n="val_2_title">Excellence</h4>
+            </div>
+
+            <div class="story-block">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Excellence">
+                </div>
+                <div class="story-content">
+                    <h3 data-i18n="val_2_title">Excellence</h3>
                     <p data-i18n="val_2_desc">From the first consultation to the final farewell, we deliver excellence in every detail, tailored to your unique needs.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✦</span>
-                    <h4 data-i18n="val_3_title">Compassion</h4>
+            </div>
+
+            <div class="story-block">
+                <div class="story-img">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Compassion">
+                </div>
+                <div class="story-content">
+                    <h3 data-i18n="val_3_title">Compassion</h3>
                     <p data-i18n="val_3_desc">We serve with empathy and kindness, standing by your side as a supportive partner through every step of the journey.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact_title">Get in Touch</h2>
+            
+            <div class="contact-card">
+                <p style="margin-bottom: 40px; color: #666;" data-i18n="contact_desc">We are here to answer any questions you may have about our services.</p>
+                
+                <!-- 联系人 -->
+                <div class="contact-item">
+                    <span class="contact-icon">👤</span>
+                    <span data-i18n="contact_name_label">Contact:</span>
+                    <strong>Wendy Chen</strong>
+                </div>
+
+                <!-- 电话 -->
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <a href="tel:+65 9238 1366" class="contact-link" data-i18n="contact_phone">+65 9238 1366</a>
+                </div>
+
+                <!-- 邮箱 -->
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <a href="nirvana.memorial@yahoo,com" class="contact-link" data-i18n="contact_email">nirvana.memorial@yahoo.com</a>
                 </div>
             </div>
         </div>
@@ -273,9 +468,16 @@
         <p class="copyright" data-i18n="footer_copy">© 2026 Nirvana Clone. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript 逻辑 -->
+    <!-- JavaScript 逻辑 (已完整修复) -->
+        <!-- 页脚 -->
+    <footer>
+        <p>NIRVANA STYLE</p>
+        <p class="copyright" data-i18n="footer_copy">© 2026 Nirvana Clone. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 下面是修复好的完整 JavaScript 逻辑 -->
     <script>
-        // 1. 翻译字典 (在这里修改文字)
+        // 1. 完整的语言包（包含中文）
         const translations = {
             en: {
                 nav_home: "Home",
@@ -296,13 +498,18 @@
                 val_2_desc: "From the first consultation to the final farewell, we deliver excellence in every detail, tailored to your unique needs.",
                 val_3_title: "Compassion",
                 val_3_desc: "We serve with empathy and kindness, standing by your side as a supportive partner through every step of the journey.",
+                contact_title: "Get in Touch",
+                contact_desc: "We are here to answer any questions you may have about our services.",
+                contact_name_label: "Wendy Chen:",
+                contact_phone: "+65 9238 1366",
+                contact_email: "nirvana.memorial@yahoo.com",
                 footer_copy: "© 2026 Nirvana Clone. All Rights Reserved."
             },
             zh: {
                 nav_home: "首页",
                 nav_about: "关于我们",
                 nav_services: "服务项目",
-                nav_contact: "联系方式",
+                nav_contact: "联系我们",
                 hero_title: "歌颂生命",
                 hero_subtitle: "致敬回忆，传承永恒",
                 about_title: "我们是谁",
@@ -317,40 +524,51 @@
                 val_2_desc: "从初次咨询到最后告别，我们在每一个细节上都追求卓越，为您量身定制。",
                 val_3_title: "仁爱",
                 val_3_desc: "我们以同理心和善意服务，作为支持您的伙伴，陪伴您走过旅程的每一步。",
+                contact_title: "联系我们",
+                contact_desc: "如果您对我们的服务有任何疑问，我们随时为您解答。",
+                contact_name_label: "联系人：",
+                contact_phone: "+65 9238 1366",
+                contact_email: "nirvana.memorial@yahoo.com",
                 footer_copy: "© 2026 Nirvana Clone. 版权所有。"
             }
         };
 
-        // 2. 获取按钮和切换逻辑
+        // 2. 获取页面元素
         const langToggleBtn = document.getElementById('lang-toggle');
+        const langDropdown = document.getElementById('lang-dropdown');
+        const langOptions = document.querySelectorAll('.lang-dropdown-content button');
         
+        // 3. 切换语言的功能
         function updateLanguage(lang) {
-            // 替换所有带有 data-i18n 属性的文字
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    el.innerText = translations[lang][key];
                 }
             });
-            
-            // 更新按钮文字
-            langToggleBtn.textContent = lang === 'en' ? '中文' : 'EN';
-            
-            // 保存用户选择
-            localStorage.setItem('preferred-lang', lang);
+            // 更新按钮显示的文字
+            langToggleBtn.innerText = lang === 'en' ? 'English' : '中文';
         }
 
-        // 3. 绑定点击事件
-        langToggleBtn.addEventListener('click', () => {
-            const currentLang = localStorage.getItem('preferred-lang') || 'en';
-            const nextLang = currentLang === 'en' ? 'zh' : 'en';
-            updateLanguage(nextLang);
+        // 4. 点击主按钮：展开/收起菜单
+        langToggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // 防止冒泡
+            langDropdown.classList.toggle('active');
         });
 
-        // 4. 页面加载时初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferred-lang') || 'en'; // 默认英文
-            updateLanguage(savedLang);
+        // 5. 点击下拉菜单里的选项（English 或 中文）
+        langOptions.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const selectedLang = this.getAttribute('data-lang');
+                updateLanguage(selectedLang);
+                langDropdown.classList.remove('active'); // 选完后自动收起
+            });
+        });
+
+        // 6. 点击页面其他地方收起菜单
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('active');
         });
     </script>
 </body>
