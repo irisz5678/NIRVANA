@@ -1,102 +1,60 @@
-/* ===== Reset ===== */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* ===== Variables ===== */
-:root {
-    --dark: #2c2c2c;
-    --gold: #c5a059;
-    --light: #f7f7f7;
-}
-
-/* ===== Base ===== */
 body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    color: #333;
-    line-height: 1.9;
-    background: #fff;
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f5f5;
 }
 
-/* ✅ 关键：默认隐藏中文 */
-.lang-zh {
-    display: none;
-}
-
-/* ===== Header ===== */
 .site-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
     background: #fff;
     border-bottom: 1px solid #eee;
-    z-index: 1000;
 }
 
 .header-inner {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
-    padding: 18px 30px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-family: "Times New Roman", serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-}
-
-.header-right {
-    display: flex;
-    gap: 10px;
+    font-weight: bold;
 }
 
 .lang-btn {
-    border: 1px solid #ccc;
-    background: none;
-    padding: 6px 10px;
-    font-size: 12px;
-    cursor: pointer;
+    margin-left: 8px;
 }
 
-.lang-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-}
-
-/* ===== Hero ===== */
+/* ===== Hero（关键：这里引用本地图片）===== */
 .about-hero {
-    height: 60vh;
-    margin-top: 75px;
-    background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1920&q=80");
+    background-image: url("hero.jpg");
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     color: #fff;
+    padding: 120px 24px;
 }
 
-.hero-inner h1 {
-    font-family: "Times New Roman", serif;
-    font-size: 3rem;
-    margin-bottom: 15px;
+.hero-inner {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
 }
 
-/* ===== Sections ===== */
 .section {
-    padding: 100px 20px;
+    background: #fff;
+    padding: 80px 24px;
 }
 
 .light-bg {
-    background: var(--light);
+    background: #f0f0f0;
 }
 
 .container {
@@ -104,96 +62,24 @@ body {
     margin: auto;
 }
 
-.container.narrow {
-    max-width: 760px;
+.narrow {
+    max-width: 700px;
 }
 
-.section-title {
-    text-align: center;
-    font-family: "Times New Roman", serif;
-    font-size: 2.4rem;
-    margin-bottom: 50px;
-}
-
-.section-title::after {
-    content: "";
-    width: 70px;
-    height: 2px;
-    background: var(--gold);
-    display: block;
-    margin: 20px auto 0;
-}
-
-/* ===== Philosophy Grid ===== */
-.features-grid {
+.image-text {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 50px;
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
-.feature-icon {
-    display: block;
-    font-size: 40px;
-    color: var(--gold);
-    margin-bottom: 20px;
-}
-
-.feature-item h4 {
-    font-family: "Times New Roman", serif;
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-}
-
-/* ===== Footer ===== */
-.contact-card {
-    max-width: 620px;
-    margin: auto;
-    padding: 35px 30px;
-    background: #fff;
-    border: 1px solid rgba(197, 160, 89, 0.22);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-}
-
-.contact-line {
-    font-size: 1rem;
-    line-height: 2;
-    color: #333;
-    margin-bottom: 14px;
-}
-
-.contact-line a {
-    color: var(--dark);
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold);
-    transition: color 0.25s ease, border-color 0.25s ease;
-}
-
-.contact-line a:hover {
-    color: var(--gold);
-    border-color: transparent;
+.image-text img {
+    width: 100%;
 }
 
 .site-footer {
-    background: var(--dark);
-    color: #fff;
+    background: #ddd;
     text-align: center;
-    padding: 50px 20px;
-}
-
-.site-footer .small {
-    font-size: 0.75rem;
-    opacity: 0.6;
-}
-
-/* ===== Mobile ===== */
-@media (max-width: 768px) {
-    .hero-inner h1 {
-        font-size: 2.2rem;
-    }
-
-    .section {
-        padding: 70px 20px;
-    }
+    padding: 24px;
+    font-size: 14px;
 }
