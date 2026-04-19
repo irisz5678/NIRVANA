@@ -1,483 +1,941 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIRVANA | 富贵山庄</title>
-    <style>
-        /* --- 1. 基础设置 --- */
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #c0a080;
-            --light-bg: #f9f9f9;
-        }
-        body {
-            font-family: 'Georgia', serif;
-            margin: 0;
-            padding: 0;
-            background: #fff;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; padding: 0; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; margin-top: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIRVANA | 富贵山庄</title>
+<style>
+/* --- 1. 基础设置 --- */
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #c0a080;
+  --light-bg: #f9f9f9;
+}
+body {
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 0;
+}
+
+/* --- 2. 头部与导航 --- */
+.header {
+  background: #fff;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+}
+.nav {
+  display: flex;
+  gap: 30px;
+}
+.nav a {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #555;
+}
+.nav a:hover {
+  color: var(--accent-color);
+}
+/* 语言切换按钮样式 */
+#lang-toggle {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.3s;
+}
+#lang-toggle:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+/* --- 3. 英雄区域 (首屏大图) --- */
+.hero {
+  height: 80vh;
+  background-color: #2c3e50;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 60px;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn {
+  background: #fff;
+  color: #333;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  display: inline-block;
+}
+.btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+/* --- 4. 通用板块 --- */
+.section {
+  padding: 80px 0;
+}
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+  color: var(--primary-color);
+}
+.section-desc {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #666;
+}
+
+/* --- 5. 关于我们 --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.about-text h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+.about-text p {
+  margin-bottom: 20px;
+  color: #666;
+  text-align: justify;
+}
+.about-img img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  background-color: #eee;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+/* --- 6. 服务板块 --- */
+.services {
+  background: var(--light-bg);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.service-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 5px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-bottom: 3px solid transparent;
+  cursor: pointer; /* 添加手型光标 */
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-bottom: 3px solid var(--accent-color);
+}
+.service-icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+  display: block;
+}
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+.service-card p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* --- 7. 联系与表单 --- */
+.contact-info-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+.contact-item {
+  text-align: center;
+}
+.contact-item span {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 10px;
+}
+.contact-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+.contact-item a {
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+.contact-item a:hover {
+  color: var(--accent-color);
+}
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  background: var(--accent-color);
+}
+
+/* 首页新增图文板块样式 */
+.home-features {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 40px;
+}
+
+/* 反向排列：让图片在右边，文字在左边 */
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-img {
+  flex: 1;
+}
+
+.feature-img img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.feature-text {
+  flex: 1;
+  padding: 20px;
+}
+
+.feature-text h3 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+  border-left: 4px solid #c5a47e; /* 金色左边框装饰 */
+  padding-left: 15px;
+}
+
+.feature-text p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* 手机端适配：变成上下排列 */
+@media (max-width: 768px) {
+  .feature-row, .feature-row.reverse {
+    flex-direction: column;
+  }
+  .feature-text {
+    padding: 10px 0;
+    text-align: center;
+  }
+  .feature-text h3 {
+    border-left: none;
+    border-bottom: 2px solid #c5a47e;
+    padding-bottom: 10px;
+    padding-left: 0;
+  }
+}
+/* --- 8. 页脚 --- */
+.footer {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+.footer p {
+  margin: 0;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* --- 9. 新增：服务详情弹窗样式 --- */
+.modal {
+  display: none; /* 默认隐藏 */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 弹窗顶部图片区 */
+.modal-header {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+.modal-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 弹窗文字内容 */
+.modal-body {
+  padding: 40px;
+  text-align: center;
+  color: #333;
+}
+.modal-body h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+.modal-body p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 关闭按钮 */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 100;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.close-btn:hover {
+  color: #ccc;
+}
+
+/* 响应式：在小屏幕上调整图片高度 */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .nav {
+    display: none;
+  }
+  /* 调整弹窗图片在手机上的高度 */
+  .modal-header {
+    height: 200px;
+  }
+  .modal-body {
+    padding: 20px;
+  }
+/* --- 照片库样式开始 --- */
+
+/* 整个板块的背景和间距 */
+.photo-section {
+    padding: 60px 0;
+    background-color: #f9f9f9; /* 浅灰色背景，保护眼睛 */
+    text-align: center;
+}
+
+/* 标题样式 */
+.photo-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.photo-section p {
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* 【核心代码】照片网格布局 */
+.photo-grid {
+    display: grid;
+    /* 自动适应屏幕宽度：
+       - 电脑端：一行可能放 4-5 张
+       - 平板端：一行放 2-3 张
+       - 手机端：一行放 1 张
+       - 每张照片最小宽度 250px */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px; /* 照片之间的缝隙 */
+}
+
+/* 每一张照片的外壳 */
+.photo-item {
+    overflow: hidden; /* 防止图片放大后溢出圆角 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 加一点阴影，有立体感 */
+    background: #fff;
+}
+
+/* 图片本身 */
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片不变形，填满格子 */
+    transition: transform 0.3s ease; /* 动画过渡效果 */
+    display: block;
+}
+
+/* 鼠标放上去的效果 */
+.photo-item:hover img {
+    transform: scale(1.05); /* 放大 1.05 倍 */
+    cursor: pointer;
+}
+
+/* --- 照片库样式结束 --- */
+}
+    /* --- 照片库样式开始 --- */
+
+    /* 1. 控制照片的容器：让它变成网格布局 */
+    .photo-grid {
+        display: grid; /* 核心代码：开启网格模式 */
         
-        /* --- 2. 头部与导航 --- */
-        .header {
-            background: #fff;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-        }
-        .nav {
-            display: flex;
-            gap: 30px;
-        }
-        .nav a {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #555;
-        }
-        .nav a:hover { color: var(--accent-color); }
-
-        /* 语言切换按钮样式 */
-        #lang-toggle {
-            background: transparent;
-            border: 1px solid #ccc;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            color: #555;
-            transition: all 0.3s;
-        }
-        #lang-toggle:hover {
-            background: var(--primary-color);
-            color: #fff;
-            border-color: var(--primary-color);
-        }
-
-        /* --- 3. 英雄区域 (首屏大图) --- */
-        .hero {
-            height: 80vh;
-            background-color: #2c3e50; 
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            margin-bottom: 60px;
-        }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; font-weight: 400; color: #fff; }
-        .hero p { font-size: 18px; margin-bottom: 30px; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .btn {
-            background: #fff;
-            color: #333;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        .btn:hover { background: var(--accent-color); color: #fff; }
-
-        /* --- 4. 通用板块 --- */
-        .section { padding: 80px 0; }
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-        }
-        .section-desc {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            color: #666;
-        }
-
-        /* --- 5. 关于我们 --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-text h3 { font-size: 28px; margin-bottom: 20px; color: var(--primary-color); }
-        .about-text p { margin-bottom: 20px; color: #666; text-align: justify; }
-        .about-img img {
-            width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background-color: #eee;
-            min-height: 300px;
-            object-fit: cover;
-        }
-
-        /* --- 6. 服务板块 --- */
-        .services { background: var(--light-bg); }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
-            background: #fff;
-            padding: 40px 30px;
-            border-radius: 5px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-bottom: 3px solid transparent;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-bottom: 3px solid var(--accent-color);
-        }
-        .service-icon { font-size: 50px; margin-bottom: 20px; display: block; }
-        .service-card h3 { font-size: 22px; margin-bottom: 15px; color: var(--primary-color); }
-        .service-card p { color: #666; font-size: 14px; }
-
-        /* --- 7. 联系与表单 --- */
-        .contact-info-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-        .contact-item { text-align: center; }
-        .contact-item span { font-size: 30px; display: block; margin-bottom: 10px; }
-        .contact-item h3 { font-size: 18px; margin-bottom: 5px; color: var(--primary-color); }
-        .contact-item a { font-size: 20px; color: var(--primary-color); font-weight: bold; text-decoration: none; }
-        .contact-item a:hover { color: var(--accent-color); }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--primary-color);
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .submit-btn:hover { background: var(--accent-color); }
-
-        /* --- 8. 页脚 --- */
-        .footer {
-            background: var(--primary-color);
-            color: #fff;
-            padding: 60px 0;
-            text-align: center;
-        }
-        .footer p { margin: 0; opacity: 0.7; font-size: 14px; }
+        /* 自动排列：照片最小宽度 250px，如果空间够就自动多排几个 */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         
-        /* 响应式 */
-        @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 32px; }
-            .nav { display: none; }
-        }
-    </style>
+        gap: 15px; /* 照片之间的缝隙 */
+        margin-top: 20px;
+    }
+
+    /* 2. 控制照片本身 */
+    .photo-grid img {
+        width: 100%; /* 宽度占满格子 */
+        height: 250px; /* 固定高度，保证整齐 */
+        
+        object-fit: cover; /* 核心代码：裁剪图片以填满，防止变形 */
+        
+        border-radius: 8px; /* 圆角，好看一点 */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 加一点阴影 */
+        
+        transition: transform 0.3s;
+    }
+
+    /* 3. 鼠标放上去的效果 */
+    .photo-grid img:hover {
+        transform: scale(1.05); /* 放大一点点 */
+    }
+</style>
 </head>
 <body>
 
-    <!-- 1. 头部导航 -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="#" class="logo">NIRVANA 富贵山庄</a>
-            <nav class="nav">
-                <a href="#" data-i18n="nav_home">Home</a>
-                <a href="#about" data-i18n="nav_about">About Us</a>
-                <a href="#services" data-i18n="nav_services">Services</a>
-                <a href="#contact" data-i18n="nav_contact">Contact</a>
-            </nav>
-            <button id="lang-toggle">中文</button>
-        </div>
-    </header>
+<!-- 1. 头部导航 -->
+<header class="header">
+  <div class="container header-container">
+    <a href="#" class="logo">NIRVANA 富贵山庄</a>
+    <nav class="nav">
+      <a href="#" data-i18n="nav_home">Home</a>
+      <a href="#about" data-i18n="nav_about">About Us</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="#gallery" class="btn-primary">Product Brochure</a>
+    </nav>
+    <button id="lang-toggle">中文</button>
+  </div>
+</header>
 
-    <!-- 2. 首屏大图 -->
-    <section class="hero">
-        <div class="container">
-            <h1 data-i18n="hero_title">Compassionate Care for Your Loved Ones</h1>
-            <p data-i18n="hero_desc">Providing dignified funeral services with a personal touch during your time of need.</p>
-            <a href="#contact" class="btn" data-i18n="hero_btn">Contact:Wendy Chen</a>
-        </div>
-    </section>
+<!-- 2. 首屏大图 -->
+<section class="hero">
+  <div class="container">
+    <h1 data-i18n="hero_title">Compassionate Care for Your Loved Ones</h1>
+    <p data-i18n="hero_desc">Providing dignified funeral services with a personal touch during your time of need.</p>
+    <a href="#contact" class="btn" data-i18n="hero_btn">Contact:Wendy Chen</a>
+  </div>
+</section>
+<!-- 新增：首页图文展示区 -->
+<section class="home-features">
+  <div class="container">
+    
+    <!-- 第一张图：左图右文 -->
+    <div class="feature-row">
+      <div class="feature-img">
+        <img src="images/7.png" alt="Feature 1">
+      </div>
+      <div class="feature-text">
+        <h3>Traditional Ceremonies</h3>
+        <p>我们遵循传统礼仪，为您提供庄重、肃穆的告别仪式策划，让逝者安息，生者慰藉。</p>
+      </div>
+    </div>
 
-    <!-- 3. 关于我们 -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="about_title">Who We Are</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3 data-i18n="about_subtitle">A Legacy of Dignity and Trust</h3>
-                    <p data-i18n="about_p1">For over 50 years, Eternal Grace has been serving the community with compassion and integrity. We understand that losing a loved one is one of life's most difficult moments, and we are here to support you every step of the way.</p>
-                    <p data-i18n="about_p2">Our mission is to provide personalized funeral services that celebrate the unique life of your loved one, creating a meaningful tribute that brings comfort and healing.</p>
-                </div>
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800" alt="Funeral Home Interior">
-                </div>
+    <!-- 第二张图：右图左文 -->
+    <div class="feature-row reverse">
+      <div class="feature-img">
+        <img src="images/15.png" alt="Feature 2">
+      </div>
+      <div class="feature-text">
+        <h3>Modern Memorials</h3>
+        <p>结合现代审美与科技，打造个性化的追思空间，用影像和音乐铭记生命的精彩瞬间。</p>
+      </div>
+    </div>
+
+    <!-- 第三张图：左图右文 -->
+    <div class="feature-row">
+      <div class="feature-img">
+        <img src="images/55.png" alt="Feature 3">
+      </div>
+      <div class="feature-text">
+        <h3>Cremation Services</h3>
+        <p>提供高效、环保的火化服务，流程透明，尊重每一个生命的最后旅程。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- 3. 关于我们 -->
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title" data-i18n="about_title">Who We Are</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <h3 data-i18n="about_subtitle">A Legacy of Dignity and Trust</h3>
+        <p data-i18n="about_p1">Established in 2009, Nirvana Memorial Garden is part of Malaysian conglomerate Nirvana Asia Group, a world-class, full-fledged bereavement care provider with more than three decades of experience in the industry.
+
+Nirvana encompasses the vision of modernization and globalization, without compromising on the importance of keeping pace with social needs. Through the deeply rooted Chinese funeral service industry, Nirvana enriches the fine quality of the Chinese bereavement culture through continuing the tradition of honour and reverence of ancestors by their descendants.
+
+Nirvana lives by the “Caring for Life” philosophy. At Nirvana, you can always expect a pleasant experience during a pivotal moment through professional, detailed, comprehensive and well-acclaimed, one-stop-worry-free funeral services. Professionalism and quality of service are synonymous with our benchmarks that drive us towards excellence.</p>
+        <p data-i18n="about_p2">Our mission is to provide personalized funeral services that celebrate the unique life of your loved one, creating a meaningful tribute that brings comfort and healing.</p>
+      </div>
+      <div class="about-img">
+        <img src="Images/e.jpg" alt="About Us">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 服务板块 (已修改：添加了点击事件) -->
+<section id="services" class="section services">
+  <div class="container">
+    <h2 class="section-title" data-i18n="services_title">Our Services</h2>
+    <div class="services-grid">
+      
+      <!-- 卡片 1：传统葬礼 -->
+      <div class="service-card" onclick="openServiceModal(
+        'Traditional Funerals', 
+        'Dignified ceremonies honoring your traditions and beliefs, providing a space for closure and remembrance.',
+        'images/pw.jpg'
+      )">
+        <span class="service-icon">⚰️</span>
+        <h3 data-i18n="serv1_title">Traditional Funerals</h3>
+        <p data-i18n="serv1_desc">Dignified ceremonies honoring your traditions...</p>
+      </div>
+
+      <!-- 卡片 2：火化服务 -->
+      <div class="service-card" onclick="openServiceModal(
+        'Cremation Services', 
+        'Respectful and eco-friendly cremation options, with various memorial packages to suit your needs.',
+        'images/e.jpg'
+      )">
+        <span class="service-icon">🕊️</span>
+        <h3 data-i18n="serv2_title">Cremation Services</h3>
+        <p data-i18n="serv2_desc">Respectful and eco-friendly cremation options...</p>
+      </div>
+
+      <!-- 卡片 3：追悼会 -->
+      <div class="service-card" onclick="openServiceModal(
+        'Memorial Services', 
+        'Personalized gatherings to celebrate life, whether simple or elaborate, we handle the details.',
+        'images/d.jpg'
+      )">
+        <span class="service-icon">🕯️</span>
+        <h3 data-i18n="serv3_title">Memorial Services</h3>
+        <p data-i18n="serv3_desc">Personalized gatherings to celebrate life...</p>
+      </div>
+
+      <!-- 卡片 4：殡仪服务 -->
+      <div class="service-card" onclick="openServiceModal(
+        'Funeral Services', 
+        'Professional, dignified full-process services honoring the deceased with care.',
+        'images/b.jpg'
+      )">
+        <span class="service-icon">⚱️</span>
+        <h3 data-i18n="serv4_title">Funeral Services</h3>
+        <p data-i18n="serv4_desc">Professional, dignified full-process services...</p>
+      </div>
+
+      <!-- 卡片 5：神殿 & 神主牌位 -->
+      <div class="service-card" onclick="openServiceModal(
+        'Shrine & Ancestral Tablets', 
+        'Premium niche and shrine placement services with excellent Feng Shui for blessings.',
+        'images/c.jpg'
+      )">
+        <span class="service-icon">🏮</span>
+        <h3 data-i18n="serv5_title">Shrine & Ancestral Tablets</h3>
+        <p data-i18n="serv5_desc">Premium niche and shrine placement services...</p>
+      </div>
+
+      <!-- 卡片 6：祈福祭拜 -->
+      <div class="service-card" onclick="openServiceModal(
+        'Prayer & Worship', 
+        'Proxy worship, holiday prayers, and flower offerings to bridge the gap of time and space.',
+        'images/a.jpg'
+      )">
+        <span class="service-icon">🙏</span>
+        <h3 data-i18n="serv6_title">Prayer & Worship</h3>
+        <p data-i18n="serv6_desc">Proxy worship, holiday prayers and flower offerings...</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 弹窗 HTML 结构 -->
+  <div id="serviceModal" class="modal">
+    <span class="close-btn" onclick="closeServiceModal()">&times;</span>
+    <div class="modal-content">
+      <div class="modal-header">
+        <img id="modalImage" src="" alt="Service Image">
+      </div>
+      <div class="modal-body">
+        <h3 id="modalTitle">Title</h3>
+        <p id="modalText">Description</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 联系我们与表单 -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title" data-i18n="contact_title">Contact:Wendy Chen</h2>
+    <p class="section-desc" data-i18n="contact_desc">We are here to support you 24/7. Please reach out to us or fill out the form below.</p>
+    
+    <!-- 联系方式 -->
+    <div class="contact-info-grid">
+      <div class="contact-item">
+        <span>📞</span>
+        <h3 data-i18n="info_phone_title">Phone</h3>
+        <a href="tel:+65 9238 1366">+65 9238 1366</a>
+      </div>
+      <div class="contact-item">
+        <span>✉️</span>
+        <h3 data-i18n="info_email_title">Email</h3>
+        <a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a>
+      </div>
+    </div>
+
+    <!-- 资料填写表单 -->
+    <div style="background: var(--light-bg); padding: 60px 0; border-radius: 8px; margin-top: 40px;">
+      <h3 style="text-align: center; margin-bottom: 30px; font-size: 28px;" data-i18n="form_title">For details, contact nirvana for immediate assistance</h3>
+      <p style="text-align: center; margin-bottom: 40px; color: #666;" data-i18n="form_desc">Please fill out the form below so we can better assist you.</p>
+      <form action="nirvana.memorial@yahoo.com" method="post" enctype="text/plain" class="form-container">
+        <div class="form-group">
+          <label data-i18n="form_name">Your Name</label>
+          <input type="text" name="Name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_name">Your Name</label>
+          <input type="tel" name="Phone" required placeholder="+65 6666 6666">
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_email">Email Address</label>
+          <input type="email" name="Email" required placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_message">Message / Details</label>
+          <textarea name="Message" rows="4" placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" data-i18n="form_submit">Send Information</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <p data-i18n="footer_copy">&copy; 2026 Legend of the Immortals . All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- 7. 翻译逻辑脚本 -->
+<script>
+  // 1. 定义翻译字典
+  const translations = {
+    en: {
+      nav_home: "Home",
+      nav_about: "About Us",
+      nav_services: "Services",
+      nav_contact: "Contact",
+      hero_title: "Compassionate Care for Your Loved Ones",
+      hero_desc: "Providing dignified funeral services with a personal touch during your time of need.",
+      hero_btn: "Contact:Wendy Chen",
+      about_title: "Who We Are",
+      about_subtitle: "A Legacy of Dignity and Trust",
+      about_p1: "At Nirvana, we believe that every life tells a story. Established with a vision to redefine the industry, we are dedicated to providing a sanctuary of peace and professionalism during life's most significant moments.",
+      about_p2: "Our mission is to provide personalized funeral services that celebrate the unique life of your loved one, creating a meaningful tribute that brings comfort and healing.",
+      services_title: "Our Services",
+      serv1_title: "Traditional Funerals",
+      serv1_desc: "Dignified ceremonies honoring your traditions and beliefs, providing a space for closure and remembrance.",
+      serv2_title: "Cremation Services",
+      serv2_desc: "Respectful and eco-friendly cremation options, with various memorial packages to suit your needs.",
+      serv3_title: "Memorial Services",
+      serv3_desc: "Personalized gatherings to celebrate life, whether simple or elaborate, we handle the details.",
+      serv4_title: "Funeral Services",
+      serv4_desc: "Professional, dignified full-process services honoring the deceased with care.",
+      serv5_title: "Shrine & Ancestral Tablets",
+      serv5_desc: "Premium niche and shrine placement services with excellent Feng Shui for blessings.",
+      serv6_title: "Prayer & Worship",
+      serv6_desc: "Proxy worship, holiday prayers, and flower offerings to bridge the gap of time and space.",
+      contact_title: "Contact:Wendy Chen",
+      contact_desc: "We are here to support you 24/7. Please reach out to us or fill out the form below.",
+      info_phone_title: "Phone",
+      info_email_title: "Email",
+      form_title: "For details, contact nirvana for immediate assistance",
+      form_desc: "Please fill out the form below so we can better assist you.",
+      form_name: "Your Name",
+      form_phone: "Phone Number",
+      form_email: "Email Address",
+      form_message: "Message / Details",
+      form_submit: "Send Information",
+      footer_copy: "© 2026 Legend of the Immortals . All rights reserved."
+    },
+    zh: {
+      nav_home: "首页",
+      nav_about: "关于我们",
+      nav_services: "服务项目",
+      nav_contact: "联系我们",
+      hero_title: "为您挚爱的家人提供关怀",
+      hero_desc: "在您艰难的时刻，我们要用充满人情味的尊严服务陪伴您。",
+      hero_btn: "联系我们",
+      about_title: "我们是谁",
+      about_subtitle: "尊严与信任的传承",
+      about_p1: "在 Nirvana，我们相信每一个生命都在讲述一个故事。我们以重塑行业为愿景，致力于在人生最重要的时刻，为您提供一片宁静与专业的港湾。",
+      about_p2: "我们的使命是提供个性化的殡葬服务，以此纪念您亲人独特的一生，创造带来安慰和治愈的有意义的 tribute。",
+      services_title: "服务项目",
+      serv1_title: "传统葬礼",
+      serv1_desc: "尊重您的传统和信仰的庄严仪式，为缅怀和告别提供空间。",
+      serv2_title: "火化服务",
+      serv2_desc: "尊重且环保的火化选项，提供多种纪念套餐以满足您的需求。",
+      serv3_title: "追悼会",
+      serv3_desc: "个性化的聚会以庆祝生命，无论简单还是隆重，我们要处理所有细节。",
+      serv4_title: "殡仪服务",
+      serv4_desc: "专业、庄重的全流程殡仪服务，体现对逝者的尊重与关怀。",
+      serv5_title: "神殿 & 神主牌位",
+      serv5_desc: "提供风水上佳的万佛墙、神殿及神主牌位安放服务，福泽子孙。",
+      serv6_title: "祈福祭拜服务",
+      serv6_desc: "代客祭拜、节日祈福及鲜花供奉，让思念跨越时空。",
+      contact_title: "联系人:Wendy Chen",
+      contact_desc: "我们全天候为您提供支持。请通过电话或邮箱与我们联系，或填写下方表格。",
+      info_phone_title: "电话",
+      info_email_title: "邮箱",
+      form_title: "详情请咨询,以便能及时帮助到您",
+      form_desc: "请填写下方表格，以便我们更好地为您提供服务。",
+      form_name: "您的姓名",
+      form_phone: "联系电话",
+      form_email: "电子邮箱",
+      form_message: "留言 / 详细需求",
+      form_submit: "发送信息",
+      footer_copy: "© 2026 Legend of the Immortals  版权所有。"
+    }
+  };
+
+  // 3. 切换语言的功能逻辑
+  let currentLang = 'en'; // 默认是英文
+  const langToggleBtn = document.getElementById('lang-toggle');
+  langToggleBtn.addEventListener('click', () => {
+    // 切换状态：如果是英文就变中文，反之亦然
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    // 更新按钮上的文字
+    langToggleBtn.textContent = currentLang === 'en' ? '中文' : 'English';
+    // 找到页面上所有带有 data-i18n 属性的元素
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      // 根据 key 去字典里找对应的文字并替换
+      if (translations[currentLang][key]) {
+        element.textContent = translations[currentLang][key];
+      }
+    });
+  });
+
+  /* --- 8. 新增：服务弹窗逻辑 --- */
+  function openServiceModal(title, text, imgSrc) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalText').textContent = text;
+    document.getElementById('modalImage').src = imgSrc;
+    document.getElementById('serviceModal').style.display = 'flex';
+  }
+
+  function closeServiceModal() {
+    document.getElementById('serviceModal').style.display = 'none';
+  }
+
+  // 点击遮罩层也可以关闭
+  window.onclick = function(event) {
+    const modal = document.getElementById('serviceModal');
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
+</script>
+<!-- ========================================== -->
+<!-- 照片库板块开始 -->
+<!-- ========================================== -->
+<section id="gallery" class="photo-section">
+    <div class="container">
+        
+        <!-- 标题部分 -->
+        <div class="section-header">
+            <h2>宣传简册图集</h2>
+            <p>在舒适宜人的氛围中,探索新的或再次探访您喜爱的神殿</p>
+        </div>
+
+        <!-- 照片墙网格 (重点在这里) -->
+        <div class="photo-grid" id="photoContainer">
+    <!-- 照片将通过下面的脚本自动插入 -->
+</div>
+
+<!-- 把这个脚本放在 </body> 结束标签的前面 -->
+<script>
+    const container = document.getElementById('photoContainer');
+    const totalPhotos = 67; // 照片总数
+    const imageFormat = '.png'; // 照片格式，如果是png就改这里
+
+    let htmlContent = '';
+
+    for (let i = 1; i <= totalPhotos; i++) {
+        // 假设你的图片命名是 1.jpg, 2.jpg...
+        // 如果你的命名是 1.jpg，就把下面的 ${i} 改成 gallery${i}
+        htmlContent += `
+            <div class="photo-item">
+                <img src="images/${i}${imageFormat}" alt="1${i}" loading="lazy">
             </div>
+        `;
+    }
+
+    container.innerHTML = htmlContent;
+</script>
+
+            <!-- ... 后面我会教你怎么快速搞定剩下的 63 张 ... -->
+
         </div>
-    </section>
-
-        <!-- 4. 服务板块 -->
-    <section id="services" class="section services">
-        <div class="container">
-            <h2 class="section-title" data-i18n="services_title">Our Services</h2>
-
-            <div class="services-grid">
-
-                <!-- 原有卡片 1 -->
-                <div class="service-card">
-                    <span class="service-icon">⚰️</span>
-                    <h3 data-i18n="serv1_title">Traditional Funerals</h3>
-                    <p data-i18n="serv1_desc">Dignified ceremonies honoring your traditions and beliefs, providing a space for closure and remembrance.</p>
-                </div>
-
-                <!-- 原有卡片 2 -->
-                <div class="service-card">
-                    <span class="service-icon">🕊️</span>
-                    <h3 data-i18n="serv2_title">Cremation Services</h3>
-                    <p data-i18n="serv2_desc">Respectful and eco-friendly cremation options, with various memorial packages to suit your needs.</p>
-                </div>
-
-                <!-- 原有卡片 3 -->
-                <div class="service-card">
-                    <span class="service-icon">🕯️</span>
-                    <h3 data-i18n="serv3_title">Memorial Services</h3>
-                    <p data-i18n="serv3_desc">Personalized gatherings to celebrate life, whether simple or elaborate, we handle the details.</p>
-                </div>
-
-                <!-- 新增卡片 4：殡仪服务 -->
-                <div class="service-card">
-                    <span class="service-icon">⚱️</span>
-                    <h3 data-i18n="serv4_title">殡仪服务</h3>
-                    <p data-i18n="serv4_desc">专业、庄重的全流程殡仪服务，体现对逝者的尊重与关怀。</p>
-                </div>
-
-                <!-- 新增卡片 5：神殿 & 神主牌位 -->
-                <div class="service-card">
-                    <span class="service-icon">🏮</span>
-                    <h3 data-i18n="serv5_title">神殿 & 神主牌位</h3>
-                    <p data-i18n="serv5_desc">提供风水上佳的万佛墙、神殿及神主牌位安放服务，福泽子孙。</p>
-                </div>
-
-                <!-- 新增卡片 6：祈福祭拜服务 -->
-                <div class="service-card">
-                    <span class="service-icon">🙏</span>
-                    <h3 data-i18n="serv6_title">祈福祭拜服务</h3>
-                    <p data-i18n="serv6_desc">代客祭拜、节日祈福及鲜花供奉，让思念跨越时空。</p>
-                </div>
-
-            </div> <!-- 结束 services-grid -->
-        </div> <!-- 结束 container -->
-    </section>
-
-    <!-- 5. 联系我们与表单 -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="contact_title">Contact:Wendy Chen</h2>
-            <p class="section-desc" data-i18n="contact_desc">We are here to support you 24/7. Please reach out to us or fill out the form below.</p>
-            
-            <!-- 联系方式 -->
-            <div class="contact-info-grid">
-                <div class="contact-item">
-                    <span>📞</span>
-                    <h3 data-i18n="info_phone_title">Phone</h3>
-                    <a href="tel:+65 9238 1366">+65 9238 1366</a>
-                </div>
-                <div class="contact-item">
-                    <span>✉️</span>
-                    <h3 data-i18n="info_email_title">Email</h3>
-                    <a href="mailto:nirvana.memorial@yahoo.com">nirvana.memorial@yahoo.com</a>
-                </div>
-            </div>
-
-            <!-- 资料填写表单 -->
-            <div style="background: var(--light-bg); padding: 60px 0; border-radius: 8px; margin-top: 40px;">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 28px;" data-i18n="form_title">For details, contact nirvana for immediate assistance</h3>
-                <p style="text-align: center; margin-bottom: 40px; color: #666;" data-i18n="form_desc">Please fill out the form below so we can better assist you.</p>
-                
-                <form action="mailto:contact@eternalgrace.com" method="post" enctype="text/plain" class="form-container">
-                    <div class="form-group">
-                        <label data-i18n="form_name">Your Name</label>
-                        <input type="text" name="Name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_phone">Phone Number</label>
-                        <input type="tel" name="Phone" required placeholder="+65 6666 6666">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_email">Email Address</label>
-                        <input type="email" name="Email" required placeholder="example@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_message">Message / Details</label>
-                        <textarea name="Message" rows="4" placeholder="How can we help you?"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" data-i18n="form_submit">Send Information</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <p data-i18n="footer_copy">&copy; 2026 Eternal Grace. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- 7. 翻译逻辑脚本 -->
-    <script>
-        // 1. 定义翻译字典
-        const translations = {
-            en: {
-                nav_home: "Home",
-                nav_about: "About Us",
-                nav_services: "Services",
-                nav_contact: "Contact",
-                hero_title: "Compassionate Care for Your Loved Ones",
-                hero_desc: "Providing dignified funeral services with a personal touch during your time of need.",
-                hero_btn: "Contact:Wendy Chen",
-                about_title: "Who We Are",
-                about_subtitle: "A Legacy of Dignity and Trust",
-                about_p1: "At Nirvana, we believe that every life tells a story. Established with a vision to redefine the industry, we are dedicated to providing a sanctuary of peace and professionalism during life's most significant moments.",
-                about_p2: "Our mission is to provide personalized funeral services that celebrate the unique life of your loved one, creating a meaningful tribute that brings comfort and healing.",
-                services_title: "Our Services",
-                serv1_title: "Traditional Funerals",
-                serv1_desc: "Dignified ceremonies honoring your traditions and beliefs, providing a space for closure and remembrance.",
-                serv2_title: "Cremation Services",
-                serv2_desc: "Respectful and eco-friendly cremation options, with various memorial packages to suit your needs.",
-                serv3_title: "Memorial Services",
-                serv3_desc: "Personalized gatherings to celebrate life, whether simple or elaborate, we handle the details.",
-                serv4_title: "Funeral Services",
-                serv4_desc: "Professional, dignified full-process services honoring the deceased with care.",
-                serv5_title: "Shrine & Ancestral Tablets",
-                serv5_desc: "Premium niche and shrine placement services with excellent Feng Shui for blessings.",
-                serv6_title: "Prayer & Worship",
-                serv6_desc: "Proxy worship, holiday prayers, and flower offerings to bridge the gap of time and space.",
-                contact_title: "Contact:Wendy Chen",
-                contact_desc: "We are here to support you 24/7. Please reach out to us or fill out the form below.",
-                info_phone_title: "Phone",
-                info_email_title: "Email",
-                form_title: "For details, contact nirvana for immediate assistance",
-                form_desc: "Please fill out the form below so we can better assist you.",
-                form_name: "Your Name",
-                form_phone: "Phone Number",
-                form_email: "Email Address",
-                form_message: "Message / Details",
-                form_submit: "Send Information",
-                footer_copy: "© 2026 Eternal Grace. All rights reserved."
-            },
-            zh: {
-                nav_home: "首页",
-                nav_about: "关于我们",
-                nav_services: "服务项目",
-                nav_contact: "联系我们",
-                hero_title: "为您挚爱的家人提供关怀",
-                hero_desc: "在您艰难的时刻，我们要用充满人情味的尊严服务陪伴您。",
-                hero_btn: "联系我们",
-                about_title: "我们是谁",
-                about_subtitle: "尊严与信任的传承",
-                about_subtitle: "致敬回忆，传承永恒",
-                about_p1: "在 Nirvana，我们相信每一个生命都在讲述一个故事。我们以重塑行业为愿景，致力于在人生最重要的时刻，为您提供一片宁静与专业的港湾。",
-                about_p2: "我们的使命是提供个性化的殡葬服务，以此纪念您亲人独特的一生，创造带来安慰和治愈的有意义的 tribute。",
-                services_title: "服务项目",
-                serv1_title: "传统葬礼",
-                serv1_desc: "尊重您的传统和信仰的庄严仪式，为缅怀和告别提供空间。",
-                serv2_title: "火化服务",
-                serv2_desc: "尊重且环保的火化选项，提供多种纪念套餐以满足您的需求。",
-                serv3_title: "追悼会",
-                serv3_desc: "个性化的聚会以庆祝生命，无论简单还是隆重，我们要处理所有细节。",
-                contact_title: "联系人:Wendy Chen",
-                contact_desc: "我们全天候为您提供支持。请通过电话或邮箱与我们联系，或填写下方表格。",
-                info_phone_title: "电话",
-                info_email_title: "邮箱",
-                form_title: "详情请咨询,以便能及时帮助到您",
-                form_desc: "请填写下方表格，以便我们更好地为您提供服务。",
-                form_name: "您的姓名",
-                form_phone: "联系电话",
-                form_email: "电子邮箱",
-                form_message: "留言 / 详细需求",
-                form_submit: "发送信息",
-                footer_copy: "© 2026 Eternal Grace 版权所有。"
-            }
-        };
-
-        // 3. 切换语言的功能逻辑
-        let currentLang = 'en'; // 默认是英文
-
-        // 【修复1】这里补上了获取按钮的代码，否则下面找不到 langToggleBtn
-        const langToggleBtn = document.getElementById('lang-toggle');
-
-        langToggleBtn.addEventListener('click', () => {
-            // 切换状态：如果是英文就变中文，反之亦然
-            currentLang = currentLang === 'en' ? 'zh' : 'en';
-
-            // 更新按钮上的文字
-            langToggleBtn.textContent = currentLang === 'en' ? '中文' : 'English';
-
-            // 【修复2】找到页面上所有带有 data-i18n 属性的元素
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-
-                // 【关键修复】这里你漏掉了：根据 key 去字典里找对应的文字并替换
-                if (translations[currentLang][key]) {
-                    element.textContent = translations[currentLang][key]; // 【修复3】这里把中文分号改成了英文分号
-                }
-            }); // 结束 forEach
-        }); // 结束 addEventListener
-    </script>
+    </div>
+</section>
 </body>
 </html>
